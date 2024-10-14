@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.cdnfonts.com/css/satoshi");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.wrapper {
+  max-width: 1400px;
+  padding-inline: 40px;
+  margin: 0 auto;
+}
+
+section {
+  padding-block: 40px;
+}
+
+body {
+  font-family: "Satoshi";
+}
+
+p {
+  line-height: 1.6;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+a:hover {
+  color: green;
+}
+
+button.green-button {
+  min-width: fit-content;
+  padding-inline: 20px;
+  padding-block: 10px;
+  background-color: #3b873e;
+  color: #fff;
+}
+
+button.inverted-button {
+  min-width: fit-content;
+  padding-inline: 20px;
+  padding-block: 10px;
+  background-color: #fff;
+  color: #3b873e;
+}
+
+button.green-button a:hover {
+  color: #fff;
+}
+
+.hero {
+  background-image: linear-gradient(rgba(3, 65, 5, 0.6), rgba(3, 65, 5, 0.8)),
+    url("/hero-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 400px;
+  height: 85svh;
+  max-height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  column-gap: 20px;
+  row-gap: 30px;
+}
+
+.img-content {
+  min-height: fit-content;
+  padding-block: 60px;
+  padding-inline: 15px;
+  background-image: linear-gradient(rgba(3, 65, 5, 0.6), rgba(3, 65, 5, 0.8)),
+    url("/hero-img.jpg");
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
