@@ -12,7 +12,8 @@
   margin: 0 auto;
 }
 
-section {
+section,
+footer {
   padding-block: 40px;
 }
 
@@ -34,7 +35,7 @@ a:hover {
 }
 
 button.green-button {
-  min-width: fit-content;
+  width: fit-content;
   padding-inline: 20px;
   padding-block: 10px;
   background-color: #3b873e;
@@ -42,7 +43,7 @@ button.green-button {
 }
 
 button.inverted-button {
-  min-width: fit-content;
+  width: fit-content;
   padding-inline: 20px;
   padding-block: 10px;
   background-color: #fff;
@@ -69,18 +70,19 @@ button.green-button a:hover {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   column-gap: 20px;
   row-gap: 30px;
 }
 
 .img-content {
   min-height: fit-content;
-  padding-block: 60px;
-  padding-inline: 15px;
+  padding-block: 50px;
+  padding-inline: 40px;
   background-image: linear-gradient(rgba(3, 65, 5, 0.6), rgba(3, 65, 5, 0.8)),
     url("/hero-img.jpg");
 
   background-repeat: no-repeat;
   background-size: cover;
+  color: #fff;
 }
