@@ -1,26 +1,27 @@
 function ListingItem({ item }) {
   return (
     <div className="flex flex-col gap-3">
-      <img src="/Rectangle 5.jpg" alt="listing" className="object-cover" />
+      <img src="/Rectangle 5.jpg" alt="listing" className=" object-cover " />
+
       <p>
         <span className="font-medium">Host: </span>
-        <span>Ganza Owen Yhaan</span>
+        <span>{item.user?.name}</span>
       </p>
       <p>
         <span className="font-medium">Price: </span>
-        <span>$150</span>
+        <span>${item?.price}</span>
       </p>
       <p>
         <span className="font-medium">Duration: </span>
-        <span>30 days</span>
+        <span>{item?.duration} days</span>
       </p>
       <p>
         <span className="font-medium">Country: </span>
-        <span>Rwanda</span>
+        <span>{item?.country}</span>
       </p>
       <p>
         <span className="font-medium">Guests: </span>
-        <span>3</span>
+        <span>{item?.maxGuests}</span>
       </p>
     </div>
   );

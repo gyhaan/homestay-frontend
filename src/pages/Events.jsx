@@ -1,19 +1,20 @@
 import { useEffect, useState } from "react";
 import AppNav from "../UI/AppNav";
-import ListingItem from "../UI/ListingItem";
+import EventItem from "../UI/EventItem";
+
 import Loader from "../UI/Loader";
 import Error from "../UI/Error";
-import { getAllListings } from "../services/api";
+import { getEvents } from "../services/api";
 import { toast } from "sonner";
 
-function Listings() {
-  const [listings, setListings] = useState([]);
+function Events() {
+  const [events, setEvents] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
   useEffect(() => {
-    getAllListings()
-      .then((listings) => setListings(listings.data.listings))
+    getEvents()
+      .then((events) => setEvents(events.data.events))
       .catch((error) => {
         console.error("error", error.message);
         setIsError(error.message);
@@ -34,10 +35,10 @@ function Listings() {
         {isError && <Error message={isError} />}
         {!isLoading &&
           !isError &&
-          listings.map((item, i) => <ListingItem item={item} key={i} />)}
+          events.map((item, i) => <EventItem item={item} key={i} />)}
       </section>
     </>
   );
 }
 
-export default Listings;
+export default Events;

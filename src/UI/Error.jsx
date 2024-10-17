@@ -1,10 +1,10 @@
 import { RssErrorIcon } from "hugeicons-react";
 
-function Error() {
+function Error({ message }) {
   return (
     <div className="flex flex-col items-center gap-2">
       <RssErrorIcon size={50} color={"#3b873e"} variant={"stroke"} />
-      <p>Something went wrong, reload the page again</p>
+      <p>{message}</p>
     </div>
   );
 }
