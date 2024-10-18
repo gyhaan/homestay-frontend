@@ -2,6 +2,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import Loader from "../UI/Loader";
 import { signUpUser } from "../services/authApi";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
   const [formData, setFormData] = useState({
@@ -11,6 +12,7 @@ function SignUp() {
     password: "",
     passwordConfirm: "",
   });
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -35,6 +37,7 @@ function SignUp() {
     try {
       setIsLoading(true);
       await signUpUser(formData);
+      navigate("/");
     } catch (err) {
       toast.error(err.message);
     } finally {

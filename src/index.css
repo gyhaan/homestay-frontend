@@ -30,12 +30,15 @@ button {
   cursor: pointer;
 }
 
+.active {
+  color: #3b873e;
+}
+
 a:hover {
   color: #3b873e;
 }
 
 button.green-button {
-  width: fit-content;
   padding-inline: 20px;
   padding-block: 10px;
   background-color: #3b873e;
@@ -43,7 +46,6 @@ button.green-button {
 }
 
 button.inverted-button {
-  width: fit-content;
   padding-inline: 20px;
   padding-block: 10px;
   background-color: #fff;

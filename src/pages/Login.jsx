@@ -2,12 +2,14 @@ import { useState } from "react";
 import { toast } from "sonner";
 import Loader from "../UI/Loader";
 import { loginUser } from "../services/authApi";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
@@ -26,6 +28,7 @@ function Login() {
     try {
       setIsLoading(true);
       await loginUser(formData);
+      navigate("/listings");
     } catch (err) {
       toast.error(err.message);
     } finally {

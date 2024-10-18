@@ -1,7 +1,11 @@
 function EventItem({ item }) {
   return (
     <div className="flex flex-col gap-3">
-      <img src="/Rectangle 5.jpg" alt="listing" className=" object-cover " />
+      <img
+        src="/Rectangle 5.jpg"
+        alt="listing"
+        className=" object-cover max-h-300"
+      />
 
       <p>
         <span className="font-medium">Event Title: </span>

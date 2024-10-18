@@ -5,6 +5,7 @@ import Loader from "../UI/Loader";
 import Error from "../UI/Error";
 import { getAllListings } from "../services/api";
 import { toast } from "sonner";
+import { useLocation } from "react-router-dom";
 
 function Listings() {
   const [listings, setListings] = useState([]);
@@ -13,7 +14,9 @@ function Listings() {
 
   useEffect(() => {
     getAllListings()
-      .then((listings) => setListings(listings.data.listings))
+      .then((listings) => {
+        setListings(listings.data.listings);
+      })
       .catch((error) => {
         console.error("error", error.message);
         setIsError(error.message);
@@ -24,7 +27,6 @@ function Listings() {
 
   return (
     <>
-      <AppNav />
       <section className="img-content py-16 text-center">
         <h2 className="font-bold text-4xl mb-2">Listings</h2>
         <p>Explore all the possibilities</p>

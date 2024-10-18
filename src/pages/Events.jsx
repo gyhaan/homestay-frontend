@@ -25,10 +25,9 @@ function Events() {
 
   return (
     <>
-      <AppNav />
       <section className="img-content py-16 text-center">
-        <h2 className="font-bold text-4xl mb-2">Listings</h2>
-        <p>Explore all the possibilities</p>
+        <h2 className="font-bold text-4xl mb-2">Events</h2>
+        <p>Unforgettable Moments, One Event at a Time</p>
       </section>
       <section className="grid wrapper">
         {isLoading && <Loader />}

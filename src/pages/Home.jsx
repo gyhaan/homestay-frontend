@@ -10,12 +10,10 @@ import {
   WalletDone02Icon,
   YoutubeIcon,
 } from "hugeicons-react";
-import AppNav from "../UI/AppNav";
 
 function Home() {
   return (
     <>
-      <AppNav />
       <main>
         <section className="hero">
           <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4">
