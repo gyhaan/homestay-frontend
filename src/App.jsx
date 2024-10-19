@@ -10,6 +10,8 @@ import { Toaster } from "sonner";
 import ProtectedRoute from "./protectRoute/ProtectedRoute";
 import AppLayout from "./UI/AppLayout";
 import ViewListing from "./pages/ViewListing";
+import Profile from "./pages/Profile";
+import GuideListings from "./pages/guideListings";
 
 function App() {
   return (
@@ -33,6 +35,19 @@ function App() {
             }
           >
             <Route index element={<Listings />} />
+            <Route path="profile" element={<Profile />} />
+          </Route>
+          <Route
+            path="guides"
+            element={
+              <ProtectedRoute>
+                <AppLayout />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Listings />} />
+            <Route path="profile" element={<Profile />} />
+            <Route path="myListings" element={<GuideListings />} />
           </Route>
         </Routes>
       </BrowserRouter>

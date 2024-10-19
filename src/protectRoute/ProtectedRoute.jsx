@@ -15,11 +15,11 @@ function ProtectedRoute({ children }) {
       return;
     }
 
-    if (role === "user" && !pathname.startsWith("users")) {
+    if (role === "user" && !pathname.startsWith("/users")) {
       navigate("/users");
     }
 
-    if (role === "guide" && !pathname.startsWith("guides")) {
+    if (role === "guide" && !pathname.startsWith("/guides")) {
       navigate("/guides");
     }
 

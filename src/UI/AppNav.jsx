@@ -77,7 +77,7 @@ function AppNav({ role }) {
                   <NavLink to="/listings">Listings</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/events">Profile</NavLink>
+                  <NavLink to="/guides/profile">Profile</NavLink>
                 </li>
                 <li>
                   <NavLink to="/events">Bookings</NavLink>
