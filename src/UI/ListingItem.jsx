@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 function ListingItem({ item }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 h-full">
       <img
         src={item.images.length > 0 ? item?.images[0] : "/Rectangle 5.jpg"}
         alt="listing"
-        className="object-cover"
+        className="object-cover flex-1"
       />
 
       <p>

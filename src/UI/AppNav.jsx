@@ -31,7 +31,6 @@ function AppNav({ role }) {
             </nav>
           </div>
         </header>
-        <Outlet />
       </>
     );
   }
@@ -60,7 +59,6 @@ function AppNav({ role }) {
             </nav>
           </div>
         </header>
-        <Outlet />
       </>
     );
   }
@@ -89,7 +87,6 @@ function AppNav({ role }) {
             </nav>
           </div>
         </header>
-        <Outlet />
       </>
     );
   }

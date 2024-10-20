@@ -49,10 +49,9 @@ function SignUp() {
     <div className="flex justify-center items-center min-h-screen bg-gray-100 mx-2">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl flex flex-wrap gap-4 items-center"
       >
-        <h2 className="text-2xl font-bold mb-3 text-center">Sign Up</h2>
-        <div className="mb-3">
+        <div className="flex-1 min-w-56">
           <label htmlFor="name" className="block text-sm font-medium mb-1">
             Name:
           </label>
@@ -66,7 +65,7 @@ function SignUp() {
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-greenish"
           />
         </div>
-        <div className="mb-3">
+        <div className="flex-1 min-w-56">
           <label htmlFor="email" className="block text-sm font-medium mb-1">
             Email:
           </label>
@@ -80,7 +79,7 @@ function SignUp() {
             className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-greenish"
           />
         </div>
-        <div className="mb-3">
+        <div className="w-full">
           <label htmlFor="role" className="block text-sm font-medium mb-1">
             Role:
           </label>
@@ -104,7 +103,7 @@ function SignUp() {
           </select>
         </div>
 
-        <div className="mb-3">
+        <div className="flex-1 min-w-56">
           <label htmlFor="password" className="block text-sm font-medium mb-1">
             Password:
           </label>
@@ -127,7 +126,7 @@ function SignUp() {
             </button>
           </div>
         </div>
-        <div className="mb-5">
+        <div className="flex-1 min-w-56">
           <label
             htmlFor="passwordConfirm"
             className="block text-sm font-medium mb-1"
@@ -147,7 +146,7 @@ function SignUp() {
             <button
               type="button"
               onClick={() => setShowPasswordConfirm(!showPasswordConfirm)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500"
+              className="absolute inset-y-0 right-0 flex items-center pr-3 "
             >
               {showPasswordConfirm ? "Hide" : "Show"}
             </button>

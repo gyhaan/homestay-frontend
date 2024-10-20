@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ListingItem from "../UI/ListingItem";
 import Loader from "../UI/Loader";
 import Error from "../UI/Error";
 import { toast } from "sonner";
 import { getMyListings } from "../services/guideApi";
 import { House02Icon } from "hugeicons-react";
+import { Link } from "react-router-dom";
 
 function GuideListings() {
   const [listings, setListings] = useState([]);
@@ -24,6 +25,12 @@ function GuideListings() {
       .finally(() => setIsLoading(false));
   }, []);
 
+  // useEffect(() => {
+  //   formRef.current.addEventListener("submit", function (e) {
+  //     const
+  //   });
+  // }, []);
+
   return (
     <>
       <section className="img-content py-16 text-center">
@@ -37,9 +44,12 @@ function GuideListings() {
           (listings.length > 0 ? (
             listings.map((item, i) => <ListingItem item={item} key={i} />)
           ) : (
-            <div className="text-center">
-              <House02Icon size={48} color={"#417505"} className="mx-auto" />
+            <div className="text-center space-y-4">
+              <House02Icon size={60} color={"#417505"} className="mx-auto" />
               <p>Look like you have no listings yet</p>
+              <Link to="/guides/addListing">
+                <button className="green-button">+ Add Listing</button>
+              </Link>
             </div>
           ))}
       </section>

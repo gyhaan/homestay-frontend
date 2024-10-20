@@ -12,6 +12,7 @@ import AppLayout from "./UI/AppLayout";
 import ViewListing from "./pages/ViewListing";
 import Profile from "./pages/Profile";
 import GuideListings from "./pages/guideListings";
+import AddListing from "./pages/AddListing";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             <Route index element={<Listings />} />
             <Route path="profile" element={<Profile />} />
             <Route path="myListings" element={<GuideListings />} />
+            <Route path="addListing" element={<AddListing />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,6 +1,6 @@
 function ViewListingItem({ item }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-wrap gap-5">
       <p>
         <span className="font-medium">Host: </span>
         <span>{item.user?.name}</span>

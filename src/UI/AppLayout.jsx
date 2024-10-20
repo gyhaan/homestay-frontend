@@ -7,7 +7,7 @@ function AppLayout() {
   return (
     <>
       {role ? <AppNav role={role} /> : <AppNav role={"none"} />}
-      {/* <Outlet /> */}
+      <Outlet />
     </>
   );
 }

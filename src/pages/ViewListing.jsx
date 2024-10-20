@@ -11,6 +11,8 @@ import ReviewItem from "../UI/ReviewItem";
 import ViewListingItem from "../UI/ViewListingItem";
 import ReviewComponent from "../UI/ReviewComponent";
 
+const role = JSON.parse(sessionStorage.getItem("role"));
+
 function ViewListing() {
   const { id } = useParams();
   const [listing, setListing] = useState([]);
@@ -73,7 +75,7 @@ function ViewListing() {
   }
 
   return (
-    <div className="wrapper py-10 ">
+    <div className="wrapper py-10">
       {isLoading && <Loader />}
       {isError && <Error message={isError} />}
       {!isLoading && !isError && (
@@ -82,35 +84,38 @@ function ViewListing() {
             {listing?.images?.map((el, i) => (
               <img src={el} alt="listing" key={i} className="w-full h-auto" />
             ))}
-            <ViewListingItem item={listing} />
           </div>
-          <div className="my-8">
-            {!isReviewing ? (
-              <button
-                className="green-button"
-                onClick={() => setIsReviewing(true)}
-              >
-                Add A Review
-              </button>
-            ) : null}
+          <ViewListingItem item={listing} />
+          {role === "user" && (
+            <div className="my-8">
+              {!isReviewing && (
+                <button
+                  className="green-button"
+                  onClick={() => setIsReviewing(true)}
+                >
+                  Add A Review
+                </button>
+              )}
 
-            {isReviewing ? (
-              <ReviewComponent
-                setReview={setReview}
-                rating={rating}
-                setRating={setRating}
-                addReview={addReview}
-                isAddingReview={isAddingReview}
-                cancelReview={cancelReview}
-              />
-            ) : null}
-            <h4 className="font-bold my-2 text-xl">Reviews</h4>
-            {!listing?.reviews.length ? (
-              <p>No Reviews yet!!</p>
-            ) : (
-              <ReviewItem item={listing?.reviews} />
-            )}
-          </div>
+              {isReviewing && (
+                <ReviewComponent
+                  setReview={setReview}
+                  rating={rating}
+                  setRating={setRating}
+                  addReview={addReview}
+                  isAddingReview={isAddingReview}
+                  cancelReview={cancelReview}
+                />
+              )}
+            </div>
+          )}
+
+          <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
+          {!listing?.reviews?.length ? (
+            <p>No Reviews yet!!</p>
+          ) : (
+            <ReviewItem item={listing?.reviews} />
+          )}
         </>
       )}
     </div>

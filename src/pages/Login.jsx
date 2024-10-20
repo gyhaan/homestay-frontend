@@ -37,10 +37,10 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 mx-2">
+    <div className="flex justify-center items-center min-h-screen mx-2">
       <form
         onSubmit={handleSubmit}
-        className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md"
+        className="bg-white border-2 border-gray-200 p-6 rounded-lg shadow-md w-full max-w-md"
       >
         <h2 className="text-2xl font-bold mb-4 text-center">Login</h2>
         <div className="mb-4">
