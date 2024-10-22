@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import { getListing } from "../services/api";
@@ -11,8 +11,6 @@ import ReviewItem from "../UI/ReviewItem";
 import ViewListingItem from "../UI/ViewListingItem";
 import ReviewComponent from "../UI/ReviewComponent";
 
-const role = JSON.parse(sessionStorage.getItem("role"));
-
 function ViewListing() {
   const { id } = useParams();
   const [listing, setListing] = useState([]);
@@ -22,6 +20,10 @@ function ViewListing() {
   const [rating, setRating] = useState(1);
   const [isReviewing, setIsReviewing] = useState(false);
   const [isAddingReview, setIsAddingReview] = useState(false);
+
+  const role = JSON.parse(sessionStorage.getItem("role"));
+
+  console.log(listing);
 
   useEffect(() => {
     getListing(id)
@@ -115,6 +117,13 @@ function ViewListing() {
             <p>No Reviews yet!!</p>
           ) : (
             <ReviewItem item={listing?.reviews} />
+          )}
+          {role === "user" && (
+            <Link to={`/users/booking/${listing._id}`}>
+              <button className="green-button my-3 mt-6 text-lg">
+                Book Tour
+              </button>
+            </Link>
           )}
         </>
       )}

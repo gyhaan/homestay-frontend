@@ -167,7 +167,7 @@ function Home() {
                 connect you with local hosts. Book your unforgettable experience
                 now and immerse yourself in vibrant cultures.
               </p>
-              <button className="green-button">Explore Tours</button>
+              <button className="green-button w-fit">Explore Tours</button>
             </div>
           </div>
         </section>

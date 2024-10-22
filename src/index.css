@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap");
 @import url("https://fonts.cdnfonts.com/css/satoshi");
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -90,6 +91,33 @@ button.green-button a:hover {
   background-position: right center;
   background-attachment: fixed;
   color: #fff;
+}
+
+/* Custom styles for the DatePicker */
+.react-datepicker__day--selected {
+  background-color: #38a169; /* Green background */
+  color: white; /* Text color */
+}
+
+.react-datepicker__day--in-range {
+  background-color: #68d391; /* Light green for in-range days */
+}
+
+.react-datepicker__day--hovered {
+  background-color: #a0e99f; /* Light green when hovering */
+}
+
+/* Custom styles for the DatePicker font */
+.react-datepicker {
+  font-family: "Satoshi", sans-serif; /* Change to your desired font */
+}
+
+.react-datepicker__header {
+  font-family: "Satoshi", sans-serif; /* Change header font */
+}
+
+.react-datepicker__day {
+  font-family: "Satoshi", sans-serif; /* Change day font */
 }
 
 /* HTML: <div class="loader"></div> */

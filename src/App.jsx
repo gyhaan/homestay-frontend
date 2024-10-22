@@ -13,6 +13,7 @@ import ViewListing from "./pages/ViewListing";
 import Profile from "./pages/Profile";
 import GuideListings from "./pages/guideListings";
 import AddListing from "./pages/AddListing";
+import BookingListing from "./pages/BookingListing";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           >
             <Route index element={<Listings />} />
             <Route path="profile" element={<Profile />} />
+            <Route path="booking/:id" element={<BookingListing />} />
           </Route>
           <Route
             path="guides"

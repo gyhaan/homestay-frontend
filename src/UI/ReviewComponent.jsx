@@ -29,18 +29,14 @@ function ReviewComponent({
       </div>
       <div className="flex gap-3 my-2">
         <button
-          className={`green-button ${
-            isAddingReview ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          className="green-button disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={addReview}
           disabled={isAddingReview}
         >
           {isAddingReview ? "...Adding" : "+ Add"}
         </button>
         <button
-          className={`inverted-button border border-greenish ${
-            isAddingReview ? "opacity-50 cursor-not-allowed" : ""
-          }`}
+          className="inverted-button border border-greenish disabled:opacity-50 disabled:cursor-not-allowed"
           onClick={cancelReview}
           disabled={isAddingReview}
         >

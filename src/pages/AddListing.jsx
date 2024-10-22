@@ -12,6 +12,7 @@ function ListingForm() {
     country: "",
     maxGuests: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
   const formRef = useRef();
 
   const handleChange = (e) => {
@@ -46,6 +47,7 @@ function ListingForm() {
     const data = new FormData(formRef.current);
 
     try {
+      setIsLoading(true);
       await addListing(data);
       toast.success("New listing added");
       navigate("/guides/myListings");
@@ -53,6 +55,8 @@ function ListingForm() {
     } catch (error) {
       toast.error(error.message);
       console.error("Error adding listing:", error.message);
+    } finally {
+      setIsLoading(false);
     }
 
     console.log("Form Data:", formData);
@@ -133,9 +137,10 @@ function ListingForm() {
         </div>
         <button
           type="submit"
-          className="w-full py-2 px-4 bg-greenish text-white rounded-md shadow-sm hover:bg-greenish focus:outline-none focus:ring-2 focus:ring-greenish"
+          className="w-full py-2 px-4 bg-greenish text-white rounded-md shadow-sm hover:bg-greenish focus:outline-none focus:ring-2 focus:ring-greenish disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={isLoading}
         >
-          Submit
+          {isLoading ? "...Submitting" : "Submit"}
         </button>
       </form>
     </div>
