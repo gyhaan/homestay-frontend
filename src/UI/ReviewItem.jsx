@@ -1,6 +1,6 @@
 function ReviewItem({ item }) {
   return (
-    <div className="grid gap-16">
+    <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] gap-6">
       {item.map((el, i) => (
         <div key={i} className="fade-in-up">
           <p className="font-medium ">By: {el.user.name}</p>

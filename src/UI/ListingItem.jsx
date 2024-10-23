@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function ListingItem({ item }) {
   return (
-    <div className="flex flex-col gap-3 h-full">
+    <div className="flex flex-col gap-3 h-full fade-in-up">
       <img
         src={item.images.length > 0 ? item?.images[0] : "/Rectangle 5.jpg"}
         alt="listing"
@@ -28,6 +28,10 @@ function ListingItem({ item }) {
       <p>
         <span className="font-medium">Guests: </span>
         <span>{item?.maxGuests}</span>
+      </p>
+      <p>
+        <span className="font-medium">Ratings Average: </span>
+        <span>{item?.ratingsAverage}/5</span>
       </p>
       <Link to={`/listing/${item._id}`}>
         <button className="green-button w-full">View Details</button>

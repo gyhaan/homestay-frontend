@@ -82,7 +82,7 @@ function ViewListing() {
       {isError && <Error message={isError} />}
       {!isLoading && !isError && (
         <>
-          <div className="grid mb-4">
+          <div className="grid-layout mb-4">
             {listing?.images?.map((el, i) => (
               <img src={el} alt="listing" key={i} className="w-full h-auto" />
             ))}

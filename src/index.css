@@ -73,7 +73,7 @@ button.green-button a:hover {
   color: #fff;
 }
 
-.grid {
+.grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   column-gap: 20px;

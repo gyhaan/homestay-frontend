@@ -5,11 +5,12 @@ import { getListing } from "../services/api";
 import { toast } from "sonner";
 import Loader from "../UI/Loader";
 import Error from "../UI/Error";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { createBooking } from "../services/bookingApi";
 
 function BookingListing() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
   const [listing, setListing] = useState([]);
@@ -98,17 +99,20 @@ function BookingListing() {
     // Set end date to the end of the day
     endDate.setHours(23, 59, 59, 999);
 
+    setIsLoading(true);
     try {
       // Make the API call to create the booking
       await createBooking({ listing: id, startDate, endDate });
-
       // Display success message if booking is created
       toast.success("Payment details submitted successfully!");
+      navigate("/users/myBookings");
     } catch (error) {
       // Handle any errors during the API call
       toast.error(
         `Booking failed: ${error.message || "An unexpected error occurred."}`
       );
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -208,9 +212,10 @@ function BookingListing() {
 
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-greenish text-white rounded-md shadow-sm hover:bg-greenish focus:outline-none focus:ring-2 focus:ring-greenish"
+          className="w-full py-2 px-4 bg-greenish text-white rounded-md shadow-sm hover:bg-greenish focus:outline-none focus:ring-2 focus:ring-greenish disabled:opacity-50 disabled:cursor-not-allowed"
+          disabled={isLoading}
         >
-          Submit Payment
+          {isLoading ? "...Submitting" : "Submit Payment"}
         </button>
       </form>
     </div>

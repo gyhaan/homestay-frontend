@@ -50,7 +50,7 @@ function AppNav({ role }) {
                   <NavLink to="/events">Events</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/events">Bookings</NavLink>
+                  <NavLink to="/users/myBookings">Bookings</NavLink>
                 </li>
                 <button className="green-button">
                   <a href="/signup">Log Out</a>

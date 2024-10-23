@@ -54,16 +54,15 @@ function ListingForm() {
       console.log("Listing added successfully");
     } catch (error) {
       toast.error(error.message);
-      console.error("Error adding listing:", error.message);
     } finally {
       setIsLoading(false);
     }
 
-    console.log("Form Data:", formData);
+    console.log("Form Data:", data);
   };
 
   return (
-    <div className="wrapper  h-svh py-10">
+    <div className="wrapper h-svh py-10">
       <form
         onSubmit={handleSubmit}
         className="max-w-xl mx-auto p-6 border-2 border-gray-200 rounded-lg shadow-sm flex flex-wrap gap-4 items-center"

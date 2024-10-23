@@ -36,7 +36,7 @@ function GuideListings() {
       <section className="img-content py-16 text-center">
         <h2 className="font-bold text-4xl mb-2">My Listings</h2>
       </section>
-      <section className="grid wrapper">
+      <section className="grid-layout wrapper">
         {isLoading && <Loader />}
         {isError && <Error message={isError} />}
         {!isLoading &&

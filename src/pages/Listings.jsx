@@ -29,7 +29,7 @@ function Listings() {
         <h2 className="font-bold text-4xl mb-2">Listings</h2>
         <p>Explore all the possibilities</p>
       </section>
-      <section className="grid wrapper">
+      <section className="grid-layout wrapper">
         {isLoading && <Loader />}
         {isError && <Error message={isError} />}
         {!isLoading &&

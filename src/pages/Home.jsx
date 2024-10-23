@@ -45,7 +45,7 @@ function Home() {
               allowing you to immerse in Africa's rich culture and vibrant
               communities.
             </p>
-            <div className="grid mt-7">
+            <div className="grid-layout mt-7">
               <div className="flex flex-col gap-2">
                 <img
                   src="/Rectangle 5.jpg"
@@ -98,7 +98,7 @@ function Home() {
             <p className=" max-w-2xl text-center mx-auto">
               Discover the advantages of Homestay Africa
             </p>
-            <div className="grid mt-7">
+            <div className="grid-layout mt-7">
               <div className="flex flex-col gap-2">
                 <LocationUser04Icon size={40} />
                 <h3 className="text-lg font-medium">
@@ -179,7 +179,7 @@ function Home() {
             <p className=" max-w-2xl text-center mx-auto">
               Frequently Asked Questions
             </p>
-            <div className="grid mt-7">
+            <div className="grid-layout mt-7">
               <div className="flex flex-col gap-2">
                 <h3 className="text-lg font-medium">
                   How do I book a homestay?

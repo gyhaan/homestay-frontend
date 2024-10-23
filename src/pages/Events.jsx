@@ -29,7 +29,7 @@ function Events() {
         <h2 className="font-bold text-4xl mb-2">Events</h2>
         <p>Unforgettable Moments, One Event at a Time</p>
       </section>
-      <section className="grid wrapper">
+      <section className="grid-layout wrapper">
         {isLoading && <Loader />}
         {isError && <Error message={isError} />}
         {!isLoading &&
