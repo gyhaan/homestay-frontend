@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import AppNav from "../UI/AppNav";
 import EventItem from "../UI/EventItem";
-
 import Loader from "../UI/Loader";
 import Error from "../UI/Error";
 import { getEvents } from "../services/api";
@@ -14,14 +13,29 @@ function Events() {
 
   useEffect(() => {
     getEvents()
-      .then((events) => setEvents(events.data.events))
+      .then((data) => setEvents(data.data.events))
       .catch((error) => {
-        console.error("error", error.message);
         setIsError(error.message);
         toast.error(error.message);
       })
       .finally(() => setIsLoading(false));
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="wrapper py-4">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="wrapper py-4">
+        <Error message={isError} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -30,11 +44,13 @@ function Events() {
         <p>Unforgettable Moments, One Event at a Time</p>
       </section>
       <section className="grid-layout wrapper">
-        {isLoading && <Loader />}
-        {isError && <Error message={isError} />}
-        {!isLoading &&
-          !isError &&
-          events.map((item, i) => <EventItem item={item} key={i} />)}
+        {!events.length ? (
+          <div className="text-center">
+            <p>No events available at the moment.</p>
+          </div>
+        ) : (
+          events.map((item, i) => <EventItem item={item} key={i} />)
+        )}
       </section>
     </>
   );

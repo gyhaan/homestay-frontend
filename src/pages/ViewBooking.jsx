@@ -28,7 +28,7 @@ function ViewBooking() {
 
   if (isLoading) {
     return (
-      <div className="wrapper">
+      <div className="wrapper py-4">
         <Loader />
       </div>
     );
@@ -36,7 +36,7 @@ function ViewBooking() {
 
   if (isError) {
     return (
-      <div className="wrapper">
+      <div className="wrapper py-4">
         <Error message={isError} />
       </div>
     );

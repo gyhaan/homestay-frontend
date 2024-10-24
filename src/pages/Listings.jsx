@@ -12,16 +12,31 @@ function Listings() {
 
   useEffect(() => {
     getAllListings()
-      .then((listings) => {
-        setListings(listings.data.listings);
+      .then((data) => {
+        setListings(data.data.listings);
       })
       .catch((error) => {
-        console.error("error", error.message);
         setIsError(error.message);
         toast.error(error.message);
       })
       .finally(() => setIsLoading(false));
   }, []);
+
+  if (isLoading) {
+    return (
+      <div className="wrapper py-4">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="wrapper py-4">
+        <Error message={isError} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -30,11 +45,13 @@ function Listings() {
         <p>Explore all the possibilities</p>
       </section>
       <section className="grid-layout wrapper">
-        {isLoading && <Loader />}
-        {isError && <Error message={isError} />}
-        {!isLoading &&
-          !isError &&
-          listings.map((item, i) => <ListingItem item={item} key={i} />)}
+        {!listings.length ? (
+          <div className="text-center">
+            <p>No listings available at the moment.</p>
+          </div>
+        ) : (
+          listings.map((item, i) => <ListingItem item={item} key={i} />)
+        )}
       </section>
     </>
   );

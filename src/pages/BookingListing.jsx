@@ -102,7 +102,12 @@ function BookingListing() {
     setIsLoading(true);
     try {
       // Make the API call to create the booking
-      await createBooking({ listing: id, startDate, endDate });
+      await createBooking({
+        listing: id,
+        startDate,
+        endDate,
+        guide: listing.user._id,
+      });
       // Display success message if booking is created
       toast.success("Payment details submitted successfully!");
       navigate("/users/myBookings");

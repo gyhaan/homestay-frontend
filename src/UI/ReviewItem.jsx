@@ -5,7 +5,7 @@ function ReviewItem({ item }) {
         <div key={i} className="fade-in-up">
           <p className="font-medium ">By: {el.user.name}</p>
           <p>{el.review}</p>
-          <p className="italic">Rating: {el.rating}/5</p>
+          <p className="italic font-medium">Rating: {el.rating}/5</p>
         </div>
       ))}
     </div>

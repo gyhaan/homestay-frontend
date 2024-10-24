@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import ListingItem from "../UI/ListingItem";
 import Loader from "../UI/Loader";
 import Error from "../UI/Error";
@@ -14,22 +14,31 @@ function GuideListings() {
 
   useEffect(() => {
     getMyListings()
-      .then((listings) => {
-        setListings(listings.data.listings);
+      .then((data) => {
+        setListings(data.data.listings);
       })
       .catch((error) => {
-        console.error("error", error.message);
         setIsError(error.message);
         toast.error(error.message);
       })
       .finally(() => setIsLoading(false));
   }, []);
 
-  // useEffect(() => {
-  //   formRef.current.addEventListener("submit", function (e) {
-  //     const
-  //   });
-  // }, []);
+  if (isLoading) {
+    return (
+      <div className="wrapper py-4">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="wrapper py-4">
+        <Error message={isError} />
+      </div>
+    );
+  }
 
   return (
     <>
@@ -37,21 +46,17 @@ function GuideListings() {
         <h2 className="font-bold text-4xl mb-2">My Listings</h2>
       </section>
       <section className="grid-layout wrapper">
-        {isLoading && <Loader />}
-        {isError && <Error message={isError} />}
-        {!isLoading &&
-          !isError &&
-          (listings.length > 0 ? (
-            listings.map((item, i) => <ListingItem item={item} key={i} />)
-          ) : (
-            <div className="text-center space-y-4">
-              <House02Icon size={60} color={"#417505"} className="mx-auto" />
-              <p>Look like you have no listings yet</p>
-              <Link to="/guides/addListing">
-                <button className="green-button">+ Add Listing</button>
-              </Link>
-            </div>
-          ))}
+        {!listings.length ? (
+          <div className="text-center space-y-4">
+            <House02Icon size={60} color={"#417505"} className="mx-auto" />
+            <p>Looks like you have no listings yet</p>
+            <Link to="/guides/addListing">
+              <button className="green-button">+ Add Listing</button>
+            </Link>
+          </div>
+        ) : (
+          listings.map((item, i) => <ListingItem item={item} key={i} />)
+        )}
       </section>
     </>
   );
