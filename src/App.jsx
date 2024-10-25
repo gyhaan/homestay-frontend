@@ -11,7 +11,7 @@ import ProtectedRoute from "./protectRoute/ProtectedRoute";
 import AppLayout from "./UI/AppLayout";
 import ViewListing from "./pages/ViewListing";
 import Profile from "./pages/Profile";
-import GuideListings from "./pages/guideListings";
+import GuideListings from "./pages/GuideListings";
 import AddListing from "./pages/AddListing";
 import BookingListing from "./pages/BookingListing";
 import ViewBooking from "./pages/ViewBooking";
