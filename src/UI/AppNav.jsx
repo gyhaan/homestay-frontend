@@ -1,7 +1,6 @@
-import { Menu06Icon, CancelCircleIcon } from "hugeicons-react";
 import { useEffect, useState } from "react";
-
 import { NavLink, useLocation } from "react-router-dom";
+import { Menu06Icon, CancelCircleIcon } from "hugeicons-react";
 
 function AppNav({ role }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,8 +9,6 @@ function AppNav({ role }) {
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
-
-  console.log(isOpen);
 
   if (role === "none") {
     return (

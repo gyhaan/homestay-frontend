@@ -76,56 +76,64 @@ function ViewListing() {
       });
   }
 
+  if (isLoading) {
+    return (
+      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
+        <Error message={isError} />
+      </div>
+    );
+  }
+
   return (
     <div className="wrapper py-10">
-      {isLoading && <Loader />}
-      {isError && <Error message={isError} />}
-      {!isLoading && !isError && (
-        <>
-          <div className="grid-layout mb-4">
-            {listing?.images?.map((el, i) => (
-              <img src={el} alt="listing" key={i} className="w-full h-auto" />
-            ))}
-          </div>
-          <ViewListingItem item={listing} />
-          {role === "user" && (
-            <div className="my-8">
-              {!isReviewing && (
-                <button
-                  className="green-button"
-                  onClick={() => setIsReviewing(true)}
-                >
-                  Add A Review
-                </button>
-              )}
-
-              {isReviewing && (
-                <ReviewComponent
-                  setReview={setReview}
-                  rating={rating}
-                  setRating={setRating}
-                  addReview={addReview}
-                  isAddingReview={isAddingReview}
-                  cancelReview={cancelReview}
-                />
-              )}
-            </div>
+      <div className="grid-layout mb-4">
+        {listing?.images?.map((el, i) => (
+          <img src={el} alt="listing" key={i} className="w-full h-auto" />
+        ))}
+      </div>
+      <ViewListingItem item={listing} />
+      {role === "user" && (
+        <div className="my-8">
+          {!isReviewing && (
+            <button
+              className="green-button"
+              onClick={() => setIsReviewing(true)}
+            >
+              Add A Review
+            </button>
           )}
 
-          <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
-          {!listing?.reviews?.length ? (
-            <p>No Reviews yet!!</p>
-          ) : (
-            <ReviewItem item={listing?.reviews} />
+          {isReviewing && (
+            <ReviewComponent
+              setReview={setReview}
+              rating={rating}
+              setRating={setRating}
+              addReview={addReview}
+              isAddingReview={isAddingReview}
+              cancelReview={cancelReview}
+            />
           )}
-          {role === "user" && (
-            <Link to={`/users/booking/${listing._id}`}>
-              <button className="green-button my-3 mt-6 text-lg">
-                Book Tour
-              </button>
-            </Link>
-          )}
-        </>
+        </div>
+      )}
+
+      <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
+      {!listing?.reviews?.length ? (
+        <p>No Reviews yet!!</p>
+      ) : (
+        <ReviewItem item={listing?.reviews} />
+      )}
+      {role === "user" && (
+        <Link to={`/users/booking/${listing._id}`}>
+          <button className="green-button my-3 mt-6 text-lg">Book Tour</button>
+        </Link>
       )}
     </div>
   );

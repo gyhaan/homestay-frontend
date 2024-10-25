@@ -28,7 +28,7 @@ function ViewGuideBooking() {
 
   if (isLoading) {
     return (
-      <div className="wrapper py-4">
+      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
         <Loader />
       </div>
     );
@@ -36,7 +36,7 @@ function ViewGuideBooking() {
 
   if (isError) {
     return (
-      <div className="wrapper py-4">
+      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
         <Error message={isError} />
       </div>
     );

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import AppNav from "../UI/AppNav";
 import EventItem from "../UI/EventItem";
 import Loader from "../UI/Loader";
 import Error from "../UI/Error";

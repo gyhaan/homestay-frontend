@@ -16,11 +16,11 @@ function Home() {
     <>
       <main>
         <section className="hero">
-          <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4">
-            <h1 className="text-5xl font-bold leading-[1.2]">
+          <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4 p-5">
+            <h1 className="text-4xl sm:text-5xl font-bold sm:leading-[1.2]">
               Experience Africa Like Never Before
             </h1>
-            <p className="text-lg">
+            <p className="sm:text-lg">
               Discover the beauty of Africa through authentic homestays with
               local hosts. Immerse yourself in vibrant cultures and create
               unforgettable memories.
@@ -35,9 +35,9 @@ function Home() {
             </div>
           </div>
         </section>
-        <section className="second  ">
+        <section className="second">
           <div className="wrapper">
-            <h3 className="max-w-96 text-2xl text-greenish font-bold leading-[1.2] text-center mb-3 mx-auto">
+            <h3 className="max-w-96 text-[20px] sm:text-2xl text-greenish font-bold leading-[1.2] text-center mb-3 mx-auto">
               Discover the Simple Steps to Book Your Perfect African Homestay
             </h3>
             <p className=" max-w-2xl text-center mx-auto">
