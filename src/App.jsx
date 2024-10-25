@@ -1,14 +1,12 @@
+// React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
+// Pages
 import Home from "./pages/Home";
 import Listings from "./pages/Listings";
 import Events from "./pages/Events";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
-
-import { Toaster } from "sonner";
-import ProtectedRoute from "./protectRoute/ProtectedRoute";
-import AppLayout from "./UI/AppLayout";
 import ViewListing from "./pages/ViewListing";
 import Profile from "./pages/Profile";
 import GuideListings from "./pages/GuideListings";
@@ -16,6 +14,11 @@ import AddListing from "./pages/AddListing";
 import BookingListing from "./pages/BookingListing";
 import ViewBooking from "./pages/ViewBooking";
 import ViewGuideBooking from "./pages/ViewGuideBooking";
+
+// Layout and Utilities
+import AppLayout from "./UI/AppLayout";
+import ProtectedRoute from "./protectRoute/ProtectedRoute";
+import { Toaster } from "sonner";
 
 function App() {
   return (

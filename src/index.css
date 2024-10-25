@@ -93,16 +93,16 @@ button.green-button a:hover {
   color: #fff;
 }
 
-.nav-class {
-  display: flex;
-  background-color: white;
-  flex-direction: column;
-  inset: 0;
-  padding-top: 10vh;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  z-index: 50;
+.trans {
   transition: right 0.5s ease-in-out;
+}
+
+.open {
+  right: 0;
+}
+
+.close {
+  right: -100%;
 }
 
 /* Custom styles for the DatePicker */

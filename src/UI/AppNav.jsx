@@ -25,9 +25,8 @@ function AppNav({ role }) {
                 onClick={() => setIsOpen(true)}
               />
               <ul
-                className={` gap-10 items-center fixed bg-white  -right-full mid:flex mid:static ${
-                  isOpen ? "nav-class" : ""
-                }`}
+                className={`gap-10 items-center bg-white fixed flex flex-col z-50 py-[3vh] px-4 top-0 min-w-full min-h-full mid:p-0 mid:flex-row mid:static trans`}
+                style={{ right: isOpen ? "0%" : "-100%" }}
               >
                 <CancelCircleIcon
                   className="ml-auto mid:hidden"
@@ -71,9 +70,8 @@ function AppNav({ role }) {
                 onClick={() => setIsOpen(true)}
               />
               <ul
-                className={` gap-10 items-center fixed  -right-full mid:flex mid:static ${
-                  isOpen ? "nav-class" : ""
-                } transition-all duration-500 ease-in-out`}
+                className={`gap-10 items-center bg-white fixed flex flex-col z-50 py-[3vh] px-4 top-0 h-full w-full mid:p-0 mid:flex-row mid:static trans`}
+                style={{ right: isOpen ? "0%" : "-100%" }}
               >
                 <CancelCircleIcon
                   className="ml-auto mid:hidden"
@@ -111,9 +109,8 @@ function AppNav({ role }) {
                 onClick={() => setIsOpen(true)}
               />
               <ul
-                className={` gap-10 items-center fixed -right-full mid:flex mid:static ${
-                  isOpen ? "nav-class" : ""
-                }`}
+                className={`gap-10 items-center bg-white fixed flex flex-col z-50 py-[3vh] px-4 top-0 h-full w-full mid:p-0 mid:flex-row mid:static trans`}
+                style={{ right: isOpen ? "0%" : "-100%" }}
               >
                 <CancelCircleIcon
                   className="ml-auto mid:hidden"
