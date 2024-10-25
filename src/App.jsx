@@ -15,6 +15,7 @@ import GuideListings from "./pages/guideListings";
 import AddListing from "./pages/AddListing";
 import BookingListing from "./pages/BookingListing";
 import ViewBooking from "./pages/ViewBooking";
+import ViewGuideBooking from "./pages/ViewGuideBooking";
 
 function App() {
   return (
@@ -54,6 +55,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             <Route path="myListings" element={<GuideListings />} />
             <Route path="addListing" element={<AddListing />} />
+            <Route path="myBookings" element={<ViewGuideBooking />} />
           </Route>
         </Routes>
       </BrowserRouter>

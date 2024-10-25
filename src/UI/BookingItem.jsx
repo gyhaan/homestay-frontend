@@ -3,6 +3,7 @@ import { deleteBooking } from "../services/bookingApi";
 import { useState } from "react";
 
 function BookingItem({ item }) {
+  const role = JSON.parse(sessionStorage.getItem("role"));
   const [isCancel, setIsCancel] = useState(false);
 
   async function handleCancelBooking() {
@@ -18,7 +19,7 @@ function BookingItem({ item }) {
     }
   }
   return (
-    <div className="flex flex-col gap-3 h-full max-w-2xl fade-in-up">
+    <div className="flex flex-col gap-3 h-full max-w-xl fade-in-up">
       <img
         src={
           item?.listing.images.length > 0
@@ -29,10 +30,18 @@ function BookingItem({ item }) {
         className="object-cover "
       />
 
-      <p>
-        <span className="font-medium">Host: </span>
-        <span>{item?.listing.user?.name}</span>
-      </p>
+      {role === "user" ? (
+        <p>
+          <span className="font-medium">Host: </span>
+          <span>{item?.listing.user?.name}</span>
+        </p>
+      ) : (
+        <p>
+          <span className="font-medium">Guest: </span>
+          <span>{item?.user?.name}</span>
+        </p>
+      )}
+
       <p>
         <span className="font-medium">Price: </span>
         <span>${item?.listing?.price}</span>
@@ -57,13 +66,15 @@ function BookingItem({ item }) {
         <span className="font-medium">End Date: </span>
         <span>{new Date(item?.endDate).toDateString()}</span>
       </p>
-      <button
-        className="bg-red-500 text-white py-2 disabled:opacity-50 disabled:cursor-not-allowed"
-        onClick={handleCancelBooking}
-        disabled={isCancel}
-      >
-        Cancel
-      </button>
+      {role === "user" && (
+        <button
+          className="bg-red-500 text-white py-2 disabled:opacity-50 disabled:cursor-not-allowed"
+          onClick={handleCancelBooking}
+          disabled={isCancel}
+        >
+          Cancel
+        </button>
+      )}
     </div>
   );
 }

@@ -93,6 +93,18 @@ button.green-button a:hover {
   color: #fff;
 }
 
+.nav-class {
+  display: flex;
+  background-color: white;
+  flex-direction: column;
+  inset: 0;
+  padding-top: 10vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  z-index: 50;
+  transition: right 0.5s ease-in-out;
+}
+
 /* Custom styles for the DatePicker */
 .react-datepicker__day--selected {
   background-color: #38a169; /* Green background */
@@ -153,5 +165,11 @@ button.green-button a:hover {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding-inline: 20px;
   }
 }

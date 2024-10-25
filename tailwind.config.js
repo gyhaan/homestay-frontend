@@ -6,6 +6,12 @@ export default {
       colors: {
         greenish: "#3B873E", // Adding the custom color directly
       },
+      screens: {
+        mid: "800px",
+      },
+      transitionProperty: {
+        right: "right",
+      },
     },
   },
   plugins: [],
