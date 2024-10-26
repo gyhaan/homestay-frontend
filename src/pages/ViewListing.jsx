@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import { getListing } from "../services/api";
@@ -13,6 +13,7 @@ import ReviewComponent from "../UI/ReviewComponent";
 
 function ViewListing() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [listing, setListing] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
@@ -76,6 +77,24 @@ function ViewListing() {
       });
   }
 
+  function bookChecker() {
+    if (role !== "user") {
+      toast.info("Please login to book tour!!!");
+      return;
+    }
+
+    navigate(`/users/booking/${listing._id}`);
+  }
+
+  function reviewChecker() {
+    if (role !== "user") {
+      toast.info("Please login to leave a review!!!");
+      return;
+    }
+
+    setIsReviewing(true);
+  }
+
   if (isLoading) {
     return (
       <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
@@ -100,29 +119,25 @@ function ViewListing() {
         ))}
       </div>
       <ViewListingItem item={listing} />
-      {role === "user" && (
-        <div className="my-8">
-          {!isReviewing && (
-            <button
-              className="green-button"
-              onClick={() => setIsReviewing(true)}
-            >
-              Add A Review
-            </button>
-          )}
 
-          {isReviewing && (
-            <ReviewComponent
-              setReview={setReview}
-              rating={rating}
-              setRating={setRating}
-              addReview={addReview}
-              isAddingReview={isAddingReview}
-              cancelReview={cancelReview}
-            />
-          )}
-        </div>
-      )}
+      <div className="my-8">
+        {!isReviewing && (
+          <button className="green-button" onClick={reviewChecker}>
+            Add A Review
+          </button>
+        )}
+
+        {isReviewing && (
+          <ReviewComponent
+            setReview={setReview}
+            rating={rating}
+            setRating={setRating}
+            addReview={addReview}
+            isAddingReview={isAddingReview}
+            cancelReview={cancelReview}
+          />
+        )}
+      </div>
 
       <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
       {!listing?.reviews?.length ? (
@@ -130,11 +145,9 @@ function ViewListing() {
       ) : (
         <ReviewItem item={listing?.reviews} />
       )}
-      {role === "user" && (
-        <Link to={`/users/booking/${listing._id}`}>
-          <button className="green-button my-3 mt-6 text-lg">Book Tour</button>
-        </Link>
-      )}
+      <button className="green-button my-3 mt-6 text-lg" onClick={bookChecker}>
+        Book Tour
+      </button>
     </div>
   );
 }

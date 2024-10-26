@@ -25,7 +25,11 @@ function EventItem({ item }) {
       </p>
       <p>
         <span className="font-medium">Link: </span>
-        <a href={`${item?.link}`} target="_blank">
+        <a
+          href={`${item?.link}`}
+          target="_blank"
+          className="hover:underline hover:underline-offset-4"
+        >
           {item?.link}
         </a>
       </p>

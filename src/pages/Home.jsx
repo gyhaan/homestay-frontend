@@ -16,7 +16,7 @@ function Home() {
     <>
       <main>
         <section className="hero">
-          <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4 p-5">
+          <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4 p-2 bg-red">
             <h1 className="text-4xl sm:text-5xl font-bold sm:leading-[1.2]">
               Experience Africa Like Never Before
             </h1>
@@ -157,7 +157,7 @@ function Home() {
           </div>
         </section>
         <section className="px-4">
-          <div className="img-content p-10 max-w-7xl mx-auto flex justify-between items-center gap-x-2 gap-y-4  flex-wrap ">
+          <div className="img-content py-5 px-0 sm:p-10 max-w-7xl mx-auto flex justify-between items-center gap-x-2 gap-y-4  flex-wrap ">
             <h3 className="text-3xl max-w-80 w-fit font-bold">
               Start Your African Adventure Today
             </h3>
@@ -230,7 +230,7 @@ function Home() {
       </main>
       <footer>
         <div className="wrapper">
-          <div className=" mx-auto px-10 border-2 h-60 min-h-fit border-greenish  py-7 flex flex-wrap gap-10">
+          <div className=" mx-auto px-4 sm:px-8 md:px-10 border-2 h-60 min-h-fit border-greenish py-7 flex flex-wrap gap-8 sm:gap-10">
             <div>
               <img src="/homestay-frontend.svg" alt="logo" />
               <p className="font-bold mt-2">

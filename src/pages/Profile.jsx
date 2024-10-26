@@ -3,17 +3,19 @@ import { getProfile } from "../services/authApi";
 import { toast } from "sonner";
 import { updateUser } from "../services/userApi";
 import Loader from "../UI/Loader"; // Assuming the Loader component is in the same folder
+import Error from "../UI/Error";
 
 function Profile() {
   const [data, setData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
-  const [isLoading, setIsLoading] = useState(true); // Start with loading true
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState("");
 
   useEffect(() => {
     getProfile()
       .then((data) => setData(data.data.user))
       .catch((err) => toast.error(err.message))
-      .finally(() => setIsLoading(false)); // Stop loading after fetching data
+      .finally(() => setIsLoading(false));
   }, []);
 
   async function handleClick() {
@@ -42,10 +44,18 @@ function Profile() {
 
   if (isLoading) {
     return (
-      <div className="py-6">
+      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
         <Loader />
       </div>
-    ); // Show the loader while fetching data
+    );
+  }
+
+  if (isError) {
+    return (
+      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
+        <Error message={isError} />
+      </div>
+    );
   }
 
   return (

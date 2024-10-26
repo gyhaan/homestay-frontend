@@ -14,6 +14,7 @@ import AddListing from "./pages/AddListing";
 import BookingListing from "./pages/BookingListing";
 import ViewBooking from "./pages/ViewBooking";
 import ViewGuideBooking from "./pages/ViewGuideBooking";
+import PageNotFound from "./pages/PageNotFound";
 
 // Layout and Utilities
 import AppLayout from "./UI/AppLayout";
@@ -60,9 +61,16 @@ function App() {
             <Route path="addListing" element={<AddListing />} />
             <Route path="myBookings" element={<ViewGuideBooking />} />
           </Route>
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
-      <Toaster richColors position="top-center" />
+      <Toaster
+        richColors
+        position="top-center"
+        toastOptions={{
+          className: "sonner-toast",
+        }}
+      />
     </>
   );
 }

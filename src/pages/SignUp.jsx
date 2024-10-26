@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 import Loader from "../UI/Loader";
 import { signUpUser } from "../services/authApi";
 import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+  const role = JSON.parse(sessionStorage.getItem("role"));
+  const token = JSON.parse(sessionStorage.getItem("token"));
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,6 +20,16 @@ function SignUp() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showPasswordConfirm, setShowPasswordConfirm] = useState(false);
+
+  useEffect(() => {
+    if (role === "user") {
+      navigate("/users");
+    }
+
+    if (role === "guide") {
+      navigate("/guides");
+    }
+  }, [navigate, role, token]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -46,7 +59,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 mx-2">
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 mx-4">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl flex flex-wrap gap-4 items-center"
@@ -120,7 +133,7 @@ function SignUp() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500"
+              className="absolute inset-y-0 right-0 flex items-center pr-3"
             >
               {showPassword ? "Hide" : "Show"}
             </button>

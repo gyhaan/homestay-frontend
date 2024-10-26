@@ -19,7 +19,7 @@ footer {
 }
 
 body {
-  font-family: "Satoshi";
+  font-family: "Inter";
 }
 
 p {
@@ -121,15 +121,15 @@ button.green-button a:hover {
 
 /* Custom styles for the DatePicker font */
 .react-datepicker {
-  font-family: "Satoshi", sans-serif; /* Change to your desired font */
+  font-family: "Inter", sans-serif; /* Change to your desired font */
 }
 
 .react-datepicker__header {
-  font-family: "Satoshi", sans-serif; /* Change header font */
+  font-family: "Inter", sans-serif; /* Change header font */
 }
 
 .react-datepicker__day {
-  font-family: "Satoshi", sans-serif; /* Change day font */
+  font-family: "Inter", sans-serif; /* Change day font */
 }
 
 /* HTML: <div class="loader"></div> */
@@ -166,6 +166,10 @@ button.green-button a:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.sonner-toast {
+  font-family: "Inter", sans-serif;
 }
 
 @media (max-width: 480px) {

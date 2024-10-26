@@ -1,10 +1,14 @@
-import { useState } from "react";
-import { toast } from "sonner";
-import Loader from "../UI/Loader";
-import { loginUser } from "../services/authApi";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import Loader from "../UI/Loader";
+import { loginUser } from "../services/authApi";
+
+import { toast } from "sonner";
+
 function Login() {
+  const role = JSON.parse(sessionStorage.getItem("role"));
+  const token = JSON.parse(sessionStorage.getItem("token"));
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -13,6 +17,16 @@ function Login() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    if (role === "user") {
+      navigate("/users");
+    }
+
+    if (role === "guide") {
+      navigate("/guides");
+    }
+  }, [navigate, role, token]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -37,7 +51,7 @@ function Login() {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen mx-2">
+    <div className="flex justify-center items-center min-h-screen mx-4">
       <form
         onSubmit={handleSubmit}
         className="bg-white border-2 border-gray-200 p-6 rounded-lg shadow-md w-full max-w-md"
@@ -74,7 +88,7 @@ function Login() {
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500"
+              className="absolute inset-y-0 right-0 flex items-center pr-3"
             >
               {showPassword ? "Hide" : "Show"}
             </button>

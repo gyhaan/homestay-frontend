@@ -9,7 +9,7 @@ function ReviewComponent({
   return (
     <>
       <textarea
-        className="border-2 border-greenish block py-2 px-3 focus:outline-none rounded-md min-w-80 max-w-96 h-44 "
+        className="border-2 border-greenish block py-2 px-3 focus:outline-none min-w-72 max-w-full rounded-md h-44 "
         cols="50"
         placeholder="Leave a review"
         onChange={(e) => setReview(e.target.value)}
