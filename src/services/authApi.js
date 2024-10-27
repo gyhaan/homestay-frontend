@@ -18,8 +18,8 @@ export async function signUpUser(formData) {
 
     const data = await res.json();
     console.log("User signed up successfully:", data);
-    sessionStorage.setItem("token", JSON.stringify(data.token));
-    sessionStorage.setItem("role", JSON.stringify(data.user.role));
+    // sessionStorage.setItem("token", JSON.stringify(data.token));
+    // sessionStorage.setItem("role", JSON.stringify(data.user.role));
     return data; // Optionally return the data if needed for further processing
   } catch (err) {
     console.error("Error during sign-up:", err.message);
@@ -47,8 +47,8 @@ export async function loginUser(formData) {
 
     const data = await res.json();
     console.log("User logged in successfully:", data);
-    sessionStorage.setItem("token", JSON.stringify(data.token));
-    sessionStorage.setItem("role", JSON.stringify(data.role));
+    // sessionStorage.setItem("token", JSON.stringify(data.token));
+    // sessionStorage.setItem("role", JSON.stringify(data.role));
     return data; // Optionally return the data for further use
   } catch (err) {
     console.error("Error during login:", err.message);
@@ -56,10 +56,8 @@ export async function loginUser(formData) {
   }
 }
 
-export async function getProfile() {
+export async function getProfile(token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Looks like you are not logged in!!");
     }

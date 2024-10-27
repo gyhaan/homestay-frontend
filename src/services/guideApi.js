@@ -1,7 +1,5 @@
-export async function getMyListings() {
+export async function getMyListings(token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Looks like you are not logged in!!");
     }
@@ -30,15 +28,12 @@ export async function getMyListings() {
   }
 }
 
-export async function addListing(formData) {
+export async function addListing(formData, token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Looks like you are not logged in!!");
     }
 
-    console.log(Object.fromEntries(formData));
     const res = await fetch(
       "https://homestay-backend-c160.onrender.com/api/v1/listings",
       {
@@ -63,10 +58,8 @@ export async function addListing(formData) {
   }
 }
 
-export async function getGuideBookings(id) {
+export async function getGuideBookings(token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to get bookings");
     }
@@ -84,7 +77,7 @@ export async function getGuideBookings(id) {
 
     if (!res.ok) {
       const errorData = await res.json();
-      throw new Error(errorData.message || "Failed to update user");
+      throw new Error(errorData.message || "Failed to get bookings");
     }
 
     const data = await res.json();

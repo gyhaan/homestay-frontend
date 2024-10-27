@@ -20,10 +20,11 @@ import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./UI/AppLayout";
 import ProtectedRoute from "./protectRoute/ProtectedRoute";
 import { Toaster } from "sonner";
+import { AuthProvider } from "./Context/AuthProvider";
 
 function App() {
   return (
-    <>
+    <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<AppLayout />}>
@@ -71,7 +72,7 @@ function App() {
           className: "sonner-toast",
         }}
       />
-    </>
+    </AuthProvider>
   );
 }
 

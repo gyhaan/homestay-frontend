@@ -1,15 +1,16 @@
 import { toast } from "sonner";
 import { deleteBooking } from "../services/bookingApi";
 import { useState } from "react";
+import { useAuth } from "../Context/AuthProvider";
 
 function BookingItem({ item }) {
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { role, token } = useAuth();
   const [isCancel, setIsCancel] = useState(false);
 
   async function handleCancelBooking() {
     try {
       setIsCancel(true);
-      await deleteBooking(item._id);
+      await deleteBooking(item._id, token);
       toast.success("Booking successfully cancelled");
       window.location.reload();
     } catch (err) {

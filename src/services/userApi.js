@@ -1,7 +1,5 @@
-export async function updateUser(obj) {
+export async function updateUser(obj, token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to update user");
     }
@@ -27,10 +25,8 @@ export async function updateUser(obj) {
   }
 }
 
-export async function getMyBookings() {
+export async function getMyBookings(token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to get bookings");
     }

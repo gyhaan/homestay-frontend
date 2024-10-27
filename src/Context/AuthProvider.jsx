@@ -1,9 +1,15 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  const [role, setRole] = useState("");
+  const [token, setToken] = useState("");
+  return (
+    <AuthContext.Provider value={{ role, token, setRole, setToken }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 function useAuth() {
