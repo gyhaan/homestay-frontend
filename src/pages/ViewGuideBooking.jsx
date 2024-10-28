@@ -12,12 +12,9 @@ function ViewGuideBooking() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  console.log(bookings);
-
   useEffect(() => {
     getGuideBookings(token)
       .then((data) => {
-        console.log(data.data.listings);
         setBookings(data.data.listings);
       })
       .catch((err) => {

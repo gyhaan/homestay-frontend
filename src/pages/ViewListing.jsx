@@ -24,8 +24,6 @@ function ViewListing() {
   const [isReviewing, setIsReviewing] = useState(false);
   const [isAddingReview, setIsAddingReview] = useState(false);
 
-  console.log(listing);
-
   useEffect(() => {
     getListing(id)
       .then((listing) => {

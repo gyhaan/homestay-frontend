@@ -53,14 +53,11 @@ function ListingForm() {
       await addListing(data, token);
       toast.success("New listing added");
       navigate("/guides/myListings");
-      console.log("Listing added successfully");
     } catch (error) {
       toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
-
-    console.log("Form Data:", data);
   };
 
   return (
