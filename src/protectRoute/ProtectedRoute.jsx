@@ -21,10 +21,6 @@ function ProtectedRoute({ children }) {
     } else if (role === "guide" && !pathname.startsWith("/guides")) {
       console.log("guide triggered");
       navigate(-1);
-    } else {
-      console.log("none triggered");
-      navigate(-1);
-      return;
     }
 
     setIsLoading(false);
