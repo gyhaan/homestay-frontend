@@ -16,10 +16,13 @@ function ProtectedRoute({ children }) {
     // }
 
     if (role === "user" && !pathname.startsWith("/users")) {
+      console.log("user triggered");
       navigate(-1);
     } else if (role === "guide" && !pathname.startsWith("/guides")) {
+      console.log("guide triggered");
       navigate(-1);
     } else {
+      console.log("none triggered");
       navigate(-1);
       return;
     }
