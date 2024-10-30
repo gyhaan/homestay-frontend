@@ -27,9 +27,9 @@ export async function updateUser(obj, token) {
 
 export async function getMyBookings(token) {
   try {
-    if (!token) {
-      throw new Error("Please login to get bookings");
-    }
+    // if (!token) {
+    //   throw new Error("Please login to get bookings");
+    // }
 
     const res = await fetch(
       "https://homestay-backend-c160.onrender.com/api/v1/users/getBookings",
@@ -37,8 +37,9 @@ export async function getMyBookings(token) {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
         },
+        credentials: "include",
       }
     );
 

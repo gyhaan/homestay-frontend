@@ -43,7 +43,7 @@ function Login() {
       setIsLoading(true);
       const data = await loginUser(formData);
       setRole(data.role);
-      setToken(data.token);
+      // setToken(data.token);
       navigate("/listings");
     } catch (err) {
       toast.error(err.message);

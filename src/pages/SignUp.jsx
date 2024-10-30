@@ -50,7 +50,7 @@ function SignUp() {
       setIsLoading(true);
       const data = await signUpUser(formData);
       setRole(data.user.role);
-      setToken(data.token);
+      // setToken(data.token);
       navigate("/");
     } catch (err) {
       toast.error(err.message);

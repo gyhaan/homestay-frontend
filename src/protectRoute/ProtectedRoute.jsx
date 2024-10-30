@@ -6,27 +6,38 @@ import Loader from "../UI/Loader";
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { role, token } = useAuth();
+  const { role } = useAuth();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (!token) {
-      navigate("/");
-      return;
-    }
+    // if (!token) {
+    //   navigate("/");
+    //   return;
+    // }
 
     if (role === "user" && !pathname.startsWith("/users")) {
       navigate(-1);
-    }
-
-    if (role === "guide" && !pathname.startsWith("/guides")) {
+    } else if (role === "guide" && !pathname.startsWith("/guides")) {
       navigate(-1);
+    } else {
+      navigate(-1);
+      return;
     }
 
     setIsLoading(false);
-  }, [navigate, pathname, role, token]);
+  }, [navigate, pathname, role]);
 
-  return <div>{isLoading ? <Loader /> : children}</div>;
+  return (
+    <div>
+      {isLoading ? (
+        <div className="flex items-center justify-center min-h-svh">
+          <Loader />
+        </div>
+      ) : (
+        children
+      )}
+    </div>
+  );
 }
 
 export default ProtectedRoute;

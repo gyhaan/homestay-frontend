@@ -8,6 +8,7 @@ export async function signUpUser(formData) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        credentials: "include",
       }
     );
 
@@ -18,8 +19,9 @@ export async function signUpUser(formData) {
 
     const data = await res.json();
     console.log("User signed up successfully:", data);
-    // sessionStorage.setItem("token", JSON.stringify(data.token));
-    // sessionStorage.setItem("role", JSON.stringify(data.user.role));
+    console.log(data);
+    localStorage.setItem("role", data.data.user.role);
+    console.log(document.cookie);
     return data; // Optionally return the data if needed for further processing
   } catch (err) {
     console.error("Error during sign-up:", err.message);
@@ -37,6 +39,7 @@ export async function loginUser(formData) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
+        credentials: "include",
       }
     );
 
@@ -47,8 +50,9 @@ export async function loginUser(formData) {
 
     const data = await res.json();
     console.log("User logged in successfully:", data);
-    // sessionStorage.setItem("token", JSON.stringify(data.token));
-    // sessionStorage.setItem("role", JSON.stringify(data.role));
+    localStorage.setItem("role", data.role);
+    console.log(document.cookie);
+
     return data; // Optionally return the data for further use
   } catch (err) {
     console.error("Error during login:", err.message);
