@@ -6,7 +6,6 @@ function AuthProvider({ children }) {
   const [role, setRole] = useState(() => localStorage.getItem("role") || "");
   const [token, setToken] = useState("");
 
-  console.log(typeof role);
   console.log(role);
   console.log(token);
 
