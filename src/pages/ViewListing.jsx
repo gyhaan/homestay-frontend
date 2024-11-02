@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import { getListing } from "../services/api";
@@ -10,9 +10,11 @@ import Error from "../UI/Error";
 import ReviewItem from "../UI/ReviewItem";
 import ViewListingItem from "../UI/ViewListingItem";
 import ReviewComponent from "../UI/ReviewComponent";
+import { useAuth } from "../Context/AuthProvider";
 
 function ViewListing() {
   const { id } = useParams();
+  const { role, token } = useAuth();
   const navigate = useNavigate();
   const [listing, setListing] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,10 +23,6 @@ function ViewListing() {
   const [rating, setRating] = useState(1);
   const [isReviewing, setIsReviewing] = useState(false);
   const [isAddingReview, setIsAddingReview] = useState(false);
-
-  const role = JSON.parse(sessionStorage.getItem("role"));
-
-  console.log(listing);
 
   useEffect(() => {
     getListing(id)
@@ -53,7 +51,7 @@ function ViewListing() {
     setIsAddingReview(true);
 
     try {
-      await createReview({ rating, review, listing: id });
+      await createReview({ rating, review, listing: id }, token);
       toast.success("Review was added successfully");
     } catch (err) {
       toast.error(err.message);

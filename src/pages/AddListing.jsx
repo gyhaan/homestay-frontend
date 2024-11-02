@@ -2,8 +2,10 @@ import { useRef, useState } from "react";
 import { toast } from "sonner";
 import { addListing } from "../services/guideApi";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthProvider";
 
 function ListingForm() {
+  const { token } = useAuth();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     price: "",
@@ -48,17 +50,14 @@ function ListingForm() {
 
     try {
       setIsLoading(true);
-      await addListing(data);
+      await addListing(data, token);
       toast.success("New listing added");
       navigate("/guides/myListings");
-      console.log("Listing added successfully");
     } catch (error) {
       toast.error(error.message);
     } finally {
       setIsLoading(false);
     }
-
-    console.log("Form Data:", data);
   };
 
   return (

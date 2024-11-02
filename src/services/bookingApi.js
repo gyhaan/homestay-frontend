@@ -1,7 +1,5 @@
-export async function createBooking(obj) {
+export async function createBooking(obj, token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to make a booking");
     }
@@ -27,10 +25,8 @@ export async function createBooking(obj) {
   }
 }
 
-export async function deleteBooking(id) {
+export async function deleteBooking(id, token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to delete a booking");
     }

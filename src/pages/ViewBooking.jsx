@@ -6,9 +6,10 @@ import BookingItem from "../UI/BookingItem";
 import { getMyBookings } from "../services/userApi";
 
 import { toast } from "sonner";
+import { useAuth } from "../Context/AuthProvider";
 
 function ViewBooking() {
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { token } = useAuth();
   const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -16,9 +17,8 @@ function ViewBooking() {
   console.log(bookings);
 
   useEffect(() => {
-    getMyBookings()
+    getMyBookings(token)
       .then((data) => {
-        console.log(data.data.listings);
         setBookings(data.data.listings);
       })
       .catch((err) => {

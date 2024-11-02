@@ -4,15 +4,17 @@ import { toast } from "sonner";
 import { updateUser } from "../services/userApi";
 import Loader from "../UI/Loader"; // Assuming the Loader component is in the same folder
 import Error from "../UI/Error";
+import { useAuth } from "../Context/AuthProvider";
 
 function Profile() {
+  const { token } = useAuth();
   const [data, setData] = useState({});
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
   useEffect(() => {
-    getProfile()
+    getProfile(token)
       .then((data) => setData(data.data.user))
       .catch((err) => toast.error(err.message))
       .finally(() => setIsLoading(false));
@@ -26,16 +28,13 @@ function Profile() {
 
     try {
       setIsLoading(true);
-      await updateUser(data);
-
-      getProfile()
-        .then((data) => {
-          setData(data.data.user);
-          toast.success("Data successfully updated");
-        })
-        .catch((err) => toast.error(err.message));
+      await updateUser(data, token);
+      const response = await getProfile();
+      setData(response.data.user);
+      toast.success("Data successfully updated");
     } catch (err) {
       toast.error(err.message);
+      setIsError(err.message);
     } finally {
       setIsEditing(false);
       setIsLoading(false);

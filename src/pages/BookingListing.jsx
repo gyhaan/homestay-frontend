@@ -7,9 +7,11 @@ import Loader from "../UI/Loader";
 import Error from "../UI/Error";
 import { useNavigate, useParams } from "react-router-dom";
 import { createBooking } from "../services/bookingApi";
+import { useAuth } from "../Context/AuthProvider";
 
 function BookingListing() {
   const { id } = useParams();
+  const { token } = useAuth();
   const navigate = useNavigate();
   const [startDate, setStartDate] = useState();
   const [endDate, setEndDate] = useState();
@@ -102,14 +104,17 @@ function BookingListing() {
     setIsLoading(true);
     try {
       // Make the API call to create the booking
-      await createBooking({
-        listing: id,
-        startDate,
-        endDate,
-        guide: listing.user._id,
-      });
+      await createBooking(
+        {
+          listing: id,
+          startDate,
+          endDate,
+          guide: listing.user._id,
+        },
+        token
+      );
       // Display success message if booking is created
-      toast.success("Payment details submitted successfully!");
+      toast.success("Listing booked successfully!");
       navigate("/users/myBookings");
     } catch (error) {
       // Handle any errors during the API call
