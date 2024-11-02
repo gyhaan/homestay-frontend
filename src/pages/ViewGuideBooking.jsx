@@ -4,19 +4,17 @@ import Loader from "../UI/Loader";
 import BookingItem from "../UI/BookingItem";
 import { toast } from "sonner";
 import { getGuideBookings } from "../services/guideApi";
+import { useAuth } from "../Context/AuthProvider";
 
 function ViewGuideBooking() {
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { token } = useAuth();
   const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  console.log(bookings);
-
   useEffect(() => {
-    getGuideBookings()
+    getGuideBookings(token)
       .then((data) => {
-        console.log(data.data.listings);
         setBookings(data.data.listings);
       })
       .catch((err) => {

@@ -1,10 +1,9 @@
-export async function createReview(obj) {
+export async function createReview(obj, token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to leave a review");
     }
+
     const res = await fetch(
       "https://homestay-backend-c160.onrender.com/api/v1/reviews",
       {

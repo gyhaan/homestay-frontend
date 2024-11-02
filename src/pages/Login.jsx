@@ -5,10 +5,10 @@ import Loader from "../UI/Loader";
 import { loginUser } from "../services/authApi";
 
 import { toast } from "sonner";
+import { useAuth } from "../Context/AuthProvider";
 
 function Login() {
-  const role = JSON.parse(sessionStorage.getItem("role"));
-  const token = JSON.parse(sessionStorage.getItem("token"));
+  const { role, token, setRole, setToken } = useAuth();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -41,7 +41,9 @@ function Login() {
 
     try {
       setIsLoading(true);
-      await loginUser(formData);
+      const data = await loginUser(formData);
+      setRole(data.role);
+      // setToken(data.token);
       navigate("/listings");
     } catch (err) {
       toast.error(err.message);

@@ -1,7 +1,5 @@
-export async function updateUser(obj) {
+export async function updateUser(obj, token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
     if (!token) {
       throw new Error("Please login to update user");
     }
@@ -27,13 +25,11 @@ export async function updateUser(obj) {
   }
 }
 
-export async function getMyBookings() {
+export async function getMyBookings(token) {
   try {
-    const token = JSON.parse(sessionStorage.getItem("token"));
-
-    if (!token) {
-      throw new Error("Please login to get bookings");
-    }
+    // if (!token) {
+    //   throw new Error("Please login to get bookings");
+    // }
 
     const res = await fetch(
       "https://homestay-backend-c160.onrender.com/api/v1/users/getBookings",
@@ -41,8 +37,9 @@ export async function getMyBookings() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
+          // Authorization: `Bearer ${token}`,
         },
+        credentials: "include",
       }
     );
 

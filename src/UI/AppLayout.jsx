@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 import AppNav from "./AppNav";
+import { useAuth } from "../Context/AuthProvider";
 
 function AppLayout() {
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { role } = useAuth();
 
   return (
     <>

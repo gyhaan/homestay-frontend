@@ -6,14 +6,16 @@ import { toast } from "sonner";
 import { getMyListings } from "../services/guideApi";
 import { House02Icon } from "hugeicons-react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../Context/AuthProvider";
 
 function GuideListings() {
+  const { token } = useAuth();
   const [listings, setListings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState("");
 
   useEffect(() => {
-    getMyListings()
+    getMyListings(token)
       .then((data) => {
         setListings(data.data.listings);
       })
