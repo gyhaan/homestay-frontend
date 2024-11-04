@@ -19,7 +19,7 @@ footer {
 }
 
 body {
-  font-family: "Inter";
+  font-family: "Satoshi";
 }
 
 p {
@@ -121,15 +121,15 @@ button.green-button a:hover {
 
 /* Custom styles for the DatePicker font */
 .react-datepicker {
-  font-family: "Inter", sans-serif; /* Change to your desired font */
+  font-family: "Satoshi", sans-serif; /* Change to your desired font */
 }
 
 .react-datepicker__header {
-  font-family: "Inter", sans-serif; /* Change header font */
+  font-family: "Satoshi", sans-serif; /* Change header font */
 }
 
 .react-datepicker__day {
-  font-family: "Inter", sans-serif; /* Change day font */
+  font-family: "Satoshi", sans-serif; /* Change day font */
 }
 
 /* HTML: <div class="loader"></div> */
