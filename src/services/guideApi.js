@@ -63,7 +63,7 @@ export async function addListing(formData) {
   }
 }
 
-export async function getGuideBookings(id) {
+export async function getGuideBookings() {
   try {
     const token = JSON.parse(sessionStorage.getItem("token"));
 
