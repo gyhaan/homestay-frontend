@@ -19,7 +19,7 @@ footer {
 }
 
 body {
-  font-family: "Satoshi";
+  font-family: "Satoshi", sans-serif;
 }
 
 p {
@@ -85,7 +85,6 @@ button.green-button a:hover {
   padding-inline: 40px;
   background-image: linear-gradient(rgba(3, 65, 5, 0.6), rgba(3, 65, 5, 0.8)),
     url("/hero-img.jpg");
-
   background-repeat: no-repeat;
   background-size: cover;
   background-position: right center;
@@ -169,7 +168,7 @@ button.green-button a:hover {
 }
 
 .sonner-toast {
-  font-family: "Inter", sans-serif;
+  font-family: "Satoshi", sans-serif;
 }
 
 @media (max-width: 480px) {

@@ -1,14 +1,21 @@
 import { useEffect, useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu06Icon, CancelCircleIcon } from "hugeicons-react";
 
 function AppNav({ role }) {
   const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
+
+  function handleLogOut() {
+    sessionStorage.removeItem("role");
+    sessionStorage.removeItem("token");
+    navigate("/");
+  }
 
   if (role === "none") {
     return (
@@ -83,8 +90,8 @@ function AppNav({ role }) {
                 <li>
                   <NavLink to="/users/myBookings">Bookings</NavLink>
                 </li>
-                <button className="green-button">
-                  <a href="/signup">Log Out</a>
+                <button className="green-button" onClick={handleLogOut}>
+                  <a>Log Out</a>
                 </button>
               </ul>
             </nav>
@@ -125,8 +132,8 @@ function AppNav({ role }) {
                 <li>
                   <NavLink to="/guides/myBookings">Bookings</NavLink>
                 </li>
-                <button className="green-button">
-                  <a href="/signup">Log Out</a>
+                <button className="green-button" onClick={handleLogOut}>
+                  <a>Log Out</a>
                 </button>
               </ul>
             </nav>

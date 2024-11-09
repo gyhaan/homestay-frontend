@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import EventItem from "../UI/EventItem";
-import Loader from "../UI/Loader";
+import Skeleton from "../UI/Skeleton";
 import Error from "../UI/Error";
 import { getEvents } from "../services/api";
 import { toast } from "sonner";
@@ -21,11 +21,7 @@ function Events() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
-        <Loader />
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (isError) {
@@ -38,7 +34,7 @@ function Events() {
 
   return (
     <>
-      <section className="img-content py-16 text-center">
+      <section className="img-content py-16 text-center fade-in-up">
         <h2 className="font-bold text-4xl mb-2">Events</h2>
         <p>Unforgettable Moments, One Event at a Time</p>
       </section>

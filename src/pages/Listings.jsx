@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ListingItem from "../UI/ListingItem";
-import Loader from "../UI/Loader";
+import Skeleton from "../UI/Skeleton";
 import Error from "../UI/Error";
 import { getAllListings } from "../services/api";
 import { toast } from "sonner";
@@ -23,11 +23,7 @@ function Listings() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
-        <Loader />
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (isError) {
@@ -40,7 +36,7 @@ function Listings() {
 
   return (
     <>
-      <section className="img-content py-16 text-center">
+      <section className="img-content py-16 text-center fade-in-up">
         <h2 className="font-bold text-4xl mb-2">Listings</h2>
         <p>Explore all the possibilities</p>
       </section>
