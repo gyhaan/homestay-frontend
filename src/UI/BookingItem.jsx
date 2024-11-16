@@ -1,9 +1,10 @@
 import { toast } from "sonner";
 import { deleteBooking } from "../services/bookingApi";
 import { useState } from "react";
+import { useAuth } from "../Context/AuthProvider";
 
 function BookingItem({ item }) {
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { role } = useAuth();
   const [isCancel, setIsCancel] = useState(false);
 
   async function handleCancelBooking() {

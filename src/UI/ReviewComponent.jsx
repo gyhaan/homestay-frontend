@@ -11,7 +11,7 @@ function ReviewComponent({
 }) {
   const [tempRating, setTempRating] = useState(0);
   return (
-    <>
+    <div className="fade-in-up">
       <textarea
         className="border-2 border-greenish block py-2 px-3 focus:outline-none min-w-72 max-w-full rounded-md h-44 "
         cols="50"
@@ -48,7 +48,7 @@ function ReviewComponent({
           Cancel
         </button>
       </div>
-    </>
+    </div>
   );
 }
 
