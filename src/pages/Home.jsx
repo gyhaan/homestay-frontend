@@ -22,6 +22,7 @@ function Home() {
             muted
             loop
             playsInline
+            preload="auto"
             src="/homestay video.mp4"
           ></video>
           <div className="overlay"></div>
