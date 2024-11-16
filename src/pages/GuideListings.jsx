@@ -6,6 +6,7 @@ import { toast } from "sonner";
 import { getMyListings } from "../services/guideApi";
 import { House02Icon } from "hugeicons-react";
 import { Link } from "react-router-dom";
+import Skeleton from "../UI/Skeleton";
 
 function GuideListings() {
   const [listings, setListings] = useState([]);
@@ -25,11 +26,7 @@ function GuideListings() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
-        <Loader />
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (isError) {
@@ -45,13 +42,20 @@ function GuideListings() {
       <section className="img-content py-16 text-center">
         <h2 className="font-bold text-4xl mb-2">My Listings</h2>
       </section>
+      {listings.length ? (
+        <Link to="/guides/addListing" className="wrapper block">
+          <button className="green-button my-4 ml-auto block">
+            + Add Listing
+          </button>
+        </Link>
+      ) : null}
       <section className="grid-layout wrapper">
         {!listings.length ? (
           <div className="text-center space-y-4">
             <House02Icon size={60} color={"#417505"} className="mx-auto" />
             <p>Looks like you have no listings yet</p>
             <Link to="/guides/addListing">
-              <button className="green-button">+ Add Listing</button>
+              <button className="green-button my-4">+ Add Listing</button>
             </Link>
           </div>
         ) : (

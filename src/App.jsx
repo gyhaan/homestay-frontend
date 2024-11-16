@@ -20,50 +20,53 @@ import PageNotFound from "./pages/PageNotFound";
 import AppLayout from "./UI/AppLayout";
 import ProtectedRoute from "./protectRoute/ProtectedRoute";
 import { Toaster } from "sonner";
+import { AuthProvider } from "./Context/AuthProvider";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AppLayout />}>
-            <Route index element={<Home />} />
-            <Route path="listings" element={<Listings />} />
-            <Route path="listing/:id" element={<ViewListing />} />
-            <Route path="events" element={<Events />} />
-          </Route>
-          <Route path="signup" element={<SignUp />} />
-          <Route path="login" element={<Login />} />
-          <Route
-            path="users"
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Listings />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="booking/:id" element={<BookingListing />} />
-            <Route path="myBookings" element={<ViewBooking />} />
-          </Route>
-          <Route
-            path="guides"
-            element={
-              <ProtectedRoute>
-                <AppLayout />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Listings />} />
-            <Route path="profile" element={<Profile />} />
-            <Route path="myListings" element={<GuideListings />} />
-            <Route path="addListing" element={<AddListing />} />
-            <Route path="myBookings" element={<ViewGuideBooking />} />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<AppLayout />}>
+              <Route index element={<Home />} />
+              <Route path="listings" element={<Listings />} />
+              <Route path="listing/:id" element={<ViewListing />} />
+              <Route path="events" element={<Events />} />
+            </Route>
+            <Route path="signup" element={<SignUp />} />
+            <Route path="login" element={<Login />} />
+            <Route
+              path="users"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Listings />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="booking/:id" element={<BookingListing />} />
+              <Route path="myBookings" element={<ViewBooking />} />
+            </Route>
+            <Route
+              path="guides"
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Listings />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="myListings" element={<GuideListings />} />
+              <Route path="addListing" element={<AddListing />} />
+              <Route path="myBookings" element={<ViewGuideBooking />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
       <Toaster
         richColors
         position="top-center"

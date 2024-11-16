@@ -6,6 +6,7 @@ import BookingItem from "../UI/BookingItem";
 import { getMyBookings } from "../services/userApi";
 
 import { toast } from "sonner";
+import Skeleton from "../UI/Skeleton";
 
 function ViewBooking() {
   const role = JSON.parse(sessionStorage.getItem("role"));
@@ -29,11 +30,7 @@ function ViewBooking() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
-        <Loader />
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (isError) {

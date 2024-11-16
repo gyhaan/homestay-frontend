@@ -1,3 +1,6 @@
+import { useState } from "react";
+import StarRating from "./StarRating";
+
 function ReviewComponent({
   setReview,
   rating,
@@ -6,6 +9,7 @@ function ReviewComponent({
   isAddingReview,
   cancelReview,
 }) {
+  const [tempRating, setTempRating] = useState(0);
   return (
     <>
       <textarea
@@ -14,19 +18,20 @@ function ReviewComponent({
         placeholder="Leave a review"
         onChange={(e) => setReview(e.target.value)}
       />
-      <div className="flex gap-3 my-4 ">
+      <div className="flex gap-0 my-3">
         {Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
-          <button
+          <StarRating
             key={i}
-            className={`border-2 border-greenish px-4 py-2 rounded-full hover:bg-greenish hover:text-white ${
-              rating === i ? "bg-greenish text-white" : ""
-            }`}
-            onClick={() => setRating(i)}
-          >
-            {i}
-          </button>
+            rating={rating}
+            setRating={setRating}
+            tempRating={tempRating}
+            setTempRating={setTempRating}
+            full={tempRating ? tempRating >= i : rating >= i}
+            i={i}
+          />
         ))}
       </div>
+
       <div className="flex gap-3 my-2">
         <button
           className="green-button disabled:opacity-50 disabled:cursor-not-allowed"

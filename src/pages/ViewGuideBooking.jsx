@@ -4,6 +4,7 @@ import Loader from "../UI/Loader";
 import BookingItem from "../UI/BookingItem";
 import { toast } from "sonner";
 import { getGuideBookings } from "../services/guideApi";
+import Skeleton from "../UI/Skeleton";
 
 function ViewGuideBooking() {
   const role = JSON.parse(sessionStorage.getItem("role"));
@@ -27,11 +28,7 @@ function ViewGuideBooking() {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
-        <Loader />
-      </div>
-    );
+    return <Skeleton />;
   }
 
   if (isError) {

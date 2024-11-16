@@ -10,10 +10,12 @@ import {
   WalletDone02Icon,
   YoutubeIcon,
 } from "hugeicons-react";
+import { Suspense } from "react";
+import Loader from "../UI/Loader";
 
 function Home() {
   return (
-    <>
+    <Suspense fallback={<Loader />}>
       <main>
         <section className="hero">
           <video
@@ -276,7 +278,7 @@ function Home() {
           </div>
         </div>
       </footer>
-    </>
+    </Suspense>
   );
 }
 

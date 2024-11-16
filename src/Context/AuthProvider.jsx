@@ -1,9 +1,25 @@
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext();
 
 function AuthProvider({ children }) {
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  const [role, setRole] = useState(function () {
+    const role = JSON.parse(sessionStorage.getItem("role"));
+    return role || null;
+  });
+
+  const [token, setToken] = useState(function () {
+    const token = JSON.parse(sessionStorage.getItem("token"));
+    return token || null;
+  });
+
+  console.log(role);
+
+  return (
+    <AuthContext.Provider value={{ role, setRole, token, setToken }}>
+      {children}
+    </AuthContext.Provider>
+  );
 }
 
 function useAuth() {

@@ -3,10 +3,10 @@ import { toast } from "sonner";
 import Loader from "../UI/Loader";
 import { signUpUser } from "../services/authApi";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../Context/AuthProvider";
 
 function SignUp() {
-  const role = JSON.parse(sessionStorage.getItem("role"));
-  const token = JSON.parse(sessionStorage.getItem("token"));
+  const { role, token, setRole, setToken } = useAuth();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -49,7 +49,9 @@ function SignUp() {
 
     try {
       setIsLoading(true);
-      await signUpUser(formData);
+      const { token, user } = await signUpUser(formData);
+      setRole(user.role);
+      setToken(token);
       navigate("/");
     } catch (err) {
       toast.error(err.message);

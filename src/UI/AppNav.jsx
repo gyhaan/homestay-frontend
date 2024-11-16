@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { Menu06Icon, CancelCircleIcon } from "hugeicons-react";
+import { useAuth } from "../Context/AuthProvider";
 
 function AppNav({ role }) {
-  const [isOpen, setIsOpen] = useState(false);
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { setRole, setToken } = useAuth();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setIsOpen(false);
@@ -14,6 +16,9 @@ function AppNav({ role }) {
   function handleLogOut() {
     sessionStorage.removeItem("role");
     sessionStorage.removeItem("token");
+    setRole(null);
+    setToken(null);
+
     navigate("/");
   }
 
