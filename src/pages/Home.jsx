@@ -16,6 +16,15 @@ function Home() {
     <>
       <main>
         <section className="hero">
+          <video
+            className="background-video"
+            autoPlay
+            muted
+            loop
+            playsInline
+            src="/homestay video.mp4"
+          ></video>
+          <div className="overlay"></div>
           <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4 p-2 bg-red">
             <h1 className="text-4xl sm:text-5xl font-bold sm:leading-[1.2]">
               Experience Africa Like Never Before
@@ -35,6 +44,7 @@ function Home() {
             </div>
           </div>
         </section>
+
         <section className="second">
           <div className="wrapper">
             <h3 className="max-w-96 text-[20px] sm:text-2xl text-greenish font-bold leading-[1.2] text-center mb-3 mx-auto">
