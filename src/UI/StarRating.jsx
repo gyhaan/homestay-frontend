@@ -17,6 +17,7 @@ function StarRating({ rating, setRating, tempRating, setTempRating, full, i }) {
           src="/emptyStar.svg"
           alt="star"
           className="w-8 h-auto"
+          onClick={() => setRating(i)}
           onMouseEnter={() => setTempRating(i)}
           onMouseLeave={() => setTempRating(0)}
         />
