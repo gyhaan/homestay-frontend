@@ -10,12 +10,11 @@ import {
   WalletDone02Icon,
   YoutubeIcon,
 } from "hugeicons-react";
-import { Suspense } from "react";
-import Loader from "../UI/Loader";
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
-    <Suspense fallback={<Loader />}>
+    <>
       <main>
         <section className="hero">
           <video
@@ -26,6 +25,7 @@ function Home() {
             playsInline
             preload="auto"
             src="/homestay video.mp4"
+            poster="/video-poster.webp"
           ></video>
           <div className="overlay"></div>
           <div className="flex flex-col items-center justify-center max-w-lg text-center gap-4 p-2 bg-red">
@@ -38,12 +38,12 @@ function Home() {
               unforgettable memories.
             </p>
             <div className="flex gap-4">
-              <button className="green-button">
-                <a href="">Explore Tours</a>
-              </button>
-              <button className="inverted-button">
-                <a href="">How It Works</a>
-              </button>
+              <Link to="/listings">
+                <button className="green-button">Explore Tours</button>
+              </Link>
+              <Link to="/about">
+                <button className="inverted-button">About Us</button>
+              </Link>
             </div>
           </div>
         </section>
@@ -61,7 +61,7 @@ function Home() {
             <div className="grid-layout mt-7">
               <div className="flex flex-col gap-2">
                 <img
-                  src="/Rectangle 5.jpg"
+                  src="/Rectangle 5.webp"
                   alt=""
                   className="rounded-lg object-cover w-full"
                 />
@@ -74,7 +74,7 @@ function Home() {
               </div>
               <div className="flex flex-col gap-2">
                 <img
-                  src="/Rectangle 6.jpg"
+                  src="/Rectangle 6.webp"
                   alt=""
                   className="rounded-lg object-cover w-full"
                 />
@@ -89,7 +89,7 @@ function Home() {
               </div>
               <div className="flex flex-col gap-2">
                 <img
-                  src="/Rectangle 7.jpg"
+                  src="/Rectangle 7.webp"
                   alt=""
                   className="rounded-lg object-cover w-full"
                 />
@@ -180,7 +180,9 @@ function Home() {
                 connect you with local hosts. Book your unforgettable experience
                 now and immerse yourself in vibrant cultures.
               </p>
-              <button className="green-button w-fit">Explore Tours</button>
+              <Link to="/listings">
+                <button className="green-button w-fit">Explore Tours</button>
+              </Link>
             </div>
           </div>
         </section>
@@ -252,15 +254,15 @@ function Home() {
             </div>
             <nav>
               <p className="font-bold text-greenish mb-2">Quick Links</p>
-              <ul className="flex flex-col gap-1">
+              <ul className="flex flex-col gap-2">
                 <li>
-                  <a href="">Get Started</a>
+                  <Link to="/signup">Get Started</Link>
                 </li>
                 <li>
-                  <a href="">Tours</a>
+                  <Link to="/listings">Listings</Link>
                 </li>
                 <li>
-                  <a href="">Events</a>
+                  <Link to="/events">Events</Link>
                 </li>
               </ul>
             </nav>
@@ -278,7 +280,7 @@ function Home() {
           </div>
         </div>
       </footer>
-    </Suspense>
+    </>
   );
 }
 

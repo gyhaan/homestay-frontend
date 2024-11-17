@@ -8,7 +8,6 @@ import { toast } from "sonner";
 import Skeleton from "../UI/Skeleton";
 
 function ViewBooking() {
-  const role = JSON.parse(sessionStorage.getItem("role"));
   const [bookings, setBookings] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);

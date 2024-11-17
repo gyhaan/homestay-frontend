@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
 
 import { getListing } from "../services/api";
@@ -10,7 +10,7 @@ import Error from "../UI/Error";
 import ReviewItem from "../UI/ReviewItem";
 import ViewListingItem from "../UI/ViewListingItem";
 import ReviewComponent from "../UI/ReviewComponent";
-import FullPageLoader from "../UI/FullPageLoader";
+import { useAuth } from "../Context/AuthProvider";
 
 function ViewListing() {
   const { id } = useParams();
@@ -23,7 +23,7 @@ function ViewListing() {
   const [isReviewing, setIsReviewing] = useState(false);
   const [isAddingReview, setIsAddingReview] = useState(false);
 
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { role } = useAuth();
 
   console.log(listing);
 
@@ -113,48 +113,43 @@ function ViewListing() {
   }
 
   return (
-    <Suspense fallback={<FullPageLoader />}>
-      <div className="wrapper py-10">
-        <div className="grid-layout mb-4">
-          {listing?.images?.map((el, i) => (
-            <img src={el} alt="listing" key={i} className="w-full h-auto" />
-          ))}
-        </div>
-        <ViewListingItem item={listing} />
-
-        <div className="my-8">
-          {!isReviewing && (
-            <button className="green-button" onClick={reviewChecker}>
-              Add A Review
-            </button>
-          )}
-
-          {isReviewing && (
-            <ReviewComponent
-              setReview={setReview}
-              rating={rating}
-              setRating={setRating}
-              addReview={addReview}
-              isAddingReview={isAddingReview}
-              cancelReview={cancelReview}
-            />
-          )}
-        </div>
-
-        <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
-        {!listing?.reviews?.length ? (
-          <p>No Reviews yet!!</p>
-        ) : (
-          <ReviewItem item={listing?.reviews} />
-        )}
-        <button
-          className="green-button my-3 mt-6 text-lg"
-          onClick={bookChecker}
-        >
-          Book Tour
-        </button>
+    <div className="wrapper py-10">
+      <div className="grid-layout mb-4">
+        {listing?.images?.map((el, i) => (
+          <img src={el} alt="listing" key={i} className="w-full h-auto" />
+        ))}
       </div>
-    </Suspense>
+      <ViewListingItem item={listing} />
+
+      <div className="my-8">
+        {!isReviewing && (
+          <button className="green-button" onClick={reviewChecker}>
+            Add A Review
+          </button>
+        )}
+
+        {isReviewing && (
+          <ReviewComponent
+            setReview={setReview}
+            rating={rating}
+            setRating={setRating}
+            addReview={addReview}
+            isAddingReview={isAddingReview}
+            cancelReview={cancelReview}
+          />
+        )}
+      </div>
+
+      <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
+      {!listing?.reviews?.length ? (
+        <p>No Reviews yet!!</p>
+      ) : (
+        <ReviewItem item={listing?.reviews} />
+      )}
+      <button className="green-button my-3 mt-6 text-lg" onClick={bookChecker}>
+        Book Tour
+      </button>
+    </div>
   );
 }
 

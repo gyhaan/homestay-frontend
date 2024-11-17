@@ -2,7 +2,7 @@ function EventItem({ item }) {
   return (
     <div className="flex flex-col gap-3 fade-in-up">
       <img
-        src="/Rectangle 5.jpg"
+        src="/Rectangle 5.webp"
         alt="listing"
         className=" object-cover max-h-300"
       />

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loader from "../UI/Loader";
+import { useAuth } from "../Context/AuthProvider";
 
 function ProtectedRoute({ children }) {
   const navigate = useNavigate();
-  const token = JSON.parse(sessionStorage.getItem("token"));
-  const role = JSON.parse(sessionStorage.getItem("role"));
+  const { role, token } = useAuth();
   const { pathname } = useLocation();
   const [isLoading, setIsLoading] = useState(true);
 

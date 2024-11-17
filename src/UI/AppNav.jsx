@@ -45,7 +45,7 @@ function AppNav({ role }) {
                   <NavLink to="/">Home</NavLink>
                 </li>
                 <li>
-                  <a>About</a>
+                  <NavLink to="/about">About</NavLink>
                 </li>
                 <li>
                   <NavLink to="/listings">Listings</NavLink>
