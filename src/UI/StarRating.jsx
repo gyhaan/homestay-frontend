@@ -1,4 +1,4 @@
-function StarRating({ rating, setRating, tempRating, setTempRating, full, i }) {
+function StarRating({ setRating, setTempRating, full, index }) {
   return (
     <div className="hover:cursor-pointer">
       {full ? (
@@ -6,9 +6,9 @@ function StarRating({ rating, setRating, tempRating, setTempRating, full, i }) {
           src="/fullStar.svg"
           alt="star"
           className="w-8 h-auto"
-          onClick={() => setRating(i)}
+          onClick={() => setRating(index)}
           onMouseEnter={() => {
-            setTempRating(i);
+            setTempRating(index);
           }}
           onMouseLeave={() => setTempRating(0)}
         />
@@ -17,7 +17,7 @@ function StarRating({ rating, setRating, tempRating, setTempRating, full, i }) {
           src="/emptyStar.svg"
           alt="star"
           className="w-8 h-auto"
-          onMouseEnter={() => setTempRating(i)}
+          onMouseEnter={() => setTempRating(index)}
           onMouseLeave={() => setTempRating(0)}
         />
       )}

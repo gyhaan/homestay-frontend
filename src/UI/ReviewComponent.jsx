@@ -22,12 +22,10 @@ function ReviewComponent({
         {Array.from({ length: 5 }, (_, i) => i + 1).map((i) => (
           <StarRating
             key={i}
-            rating={rating}
             setRating={setRating}
-            tempRating={tempRating}
             setTempRating={setTempRating}
             full={tempRating ? tempRating >= i : rating >= i}
-            i={i}
+            index={i}
           />
         ))}
       </div>
