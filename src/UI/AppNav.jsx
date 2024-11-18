@@ -13,6 +13,14 @@ function AppNav({ role }) {
     setIsOpen(false);
   }, [pathname]);
 
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
   function handleLogOut() {
     sessionStorage.removeItem("role");
     sessionStorage.removeItem("token");
@@ -88,6 +96,9 @@ function AppNav({ role }) {
                 />
                 <li>
                   <NavLink to="/listings">Listings</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/users/profile">Profile</NavLink>
                 </li>
                 <li>
                   <NavLink to="/events">Events</NavLink>
