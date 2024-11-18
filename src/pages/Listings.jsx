@@ -40,7 +40,7 @@ function Listings() {
         <h2 className="font-bold text-4xl mb-2">Listings</h2>
         <p>Explore all the possibilities</p>
       </section>
-      <section className="grid-layout wrapper">
+      <section className="grid-layout wrapper fade-in-up">
         {!listings.length ? (
           <div className="wrapper py-4 flex flex-col justify-center h-[30vh]">
             <Error message="No listings available at the moment." />

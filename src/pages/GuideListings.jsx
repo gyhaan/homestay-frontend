@@ -39,7 +39,7 @@ function GuideListings() {
 
   return (
     <>
-      <section className="img-content py-16 text-center">
+      <section className="img-content py-16 text-center fade-in-up">
         <h2 className="font-bold text-4xl mb-2">My Listings</h2>
       </section>
       {listings.length ? (
