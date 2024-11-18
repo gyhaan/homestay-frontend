@@ -25,8 +25,6 @@ function ViewListing() {
 
   const { role } = useAuth();
 
-  console.log(listing);
-
   useEffect(() => {
     getListing(id)
       .then((listing) => {

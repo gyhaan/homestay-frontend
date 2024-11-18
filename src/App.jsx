@@ -50,7 +50,7 @@ function App() {
                   </ProtectedRoute>
                 }
               >
-                <Route index element={<Listings />} />
+                <Route path="listings" element={<Listings />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="booking/:id" element={<BookingListing />} />
                 <Route path="myBookings" element={<ViewBooking />} />
@@ -63,7 +63,7 @@ function App() {
                   </ProtectedRoute>
                 }
               >
-                <Route index element={<Listings />} />
+                <Route path="listings" element={<Listings />} />
                 <Route path="profile" element={<Profile />} />
                 <Route path="myListings" element={<GuideListings />} />
                 <Route path="addListing" element={<AddListing />} />
