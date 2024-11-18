@@ -44,7 +44,14 @@ function Login() {
       const { role, token } = await loginUser(formData);
       setRole(role);
       setToken(token);
-      navigate("/listings");
+
+      if (role === "user") {
+        navigate("/users");
+      }
+
+      if (role === "guide") {
+        navigate("/guides");
+      }
     } catch (err) {
       toast.error(err.message);
     } finally {

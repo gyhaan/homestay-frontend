@@ -49,10 +49,17 @@ function SignUp() {
 
     try {
       setIsLoading(true);
-      const { token, user } = await signUpUser(formData);
-      setRole(user.role);
+      const { token, data } = await signUpUser(formData);
+      setRole(data.user.role);
       setToken(token);
-      navigate("/");
+
+      if (data.user.role === "user") {
+        navigate("/users");
+      }
+
+      if (data.user.role === "guide") {
+        navigate("/guides");
+      }
     } catch (err) {
       toast.error(err.message);
     } finally {

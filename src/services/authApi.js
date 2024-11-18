@@ -18,8 +18,9 @@ export async function signUpUser(formData) {
 
     const data = await res.json();
     console.log("User signed up successfully:", data);
+    console.log(data.data.user.role);
     sessionStorage.setItem("token", JSON.stringify(data.token));
-    sessionStorage.setItem("role", JSON.stringify(data.user.role));
+    sessionStorage.setItem("role", JSON.stringify(data.data.user.role));
     return data; // Optionally return the data if needed for further processing
   } catch (err) {
     console.error("Error during sign-up:", err.message);
