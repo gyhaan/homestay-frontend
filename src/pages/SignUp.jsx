@@ -23,11 +23,11 @@ function SignUp() {
 
   useEffect(() => {
     if (role === "user") {
-      navigate("/users");
+      navigate("/users/listings");
     }
 
     if (role === "guide") {
-      navigate("/guides");
+      navigate("/guides/listings");
     }
   }, [navigate, role, token]);
 
