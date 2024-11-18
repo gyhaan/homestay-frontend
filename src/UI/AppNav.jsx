@@ -95,7 +95,7 @@ function AppNav({ role }) {
                   onClick={() => setIsOpen(false)}
                 />
                 <li>
-                  <NavLink to="users/listings">Listings</NavLink>
+                  <NavLink to="/users/listings">Listings</NavLink>
                 </li>
                 <li>
                   <NavLink to="/users/profile">Profile</NavLink>
@@ -137,7 +137,7 @@ function AppNav({ role }) {
                   onClick={() => setIsOpen(false)}
                 />
                 <li>
-                  <NavLink to="guides/listings">Listings</NavLink>
+                  <NavLink to="/guides/listings">Listings</NavLink>
                 </li>
                 <li>
                   <NavLink to="/guides/mylistings">My Listings</NavLink>
