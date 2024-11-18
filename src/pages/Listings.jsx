@@ -42,7 +42,7 @@ function Listings() {
       </section>
       <section className="grid-layout wrapper">
         {!listings.length ? (
-          <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
+          <div className="wrapper py-4 flex flex-col justify-center h-[30vh]">
             <Error message="No listings available at the moment." />
           </div>
         ) : (
