@@ -42,8 +42,8 @@ function Listings() {
       </section>
       <section className="grid-layout wrapper">
         {!listings.length ? (
-          <div className="text-center">
-            <p>No listings available at the moment.</p>
+          <div className="wrapper py-4 flex flex-col justify-center h-[80vh]">
+            <Error message="No listings available at the moment." />
           </div>
         ) : (
           listings.map((item, i) => <ListingItem item={item} key={i} />)
