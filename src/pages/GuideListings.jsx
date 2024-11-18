@@ -43,13 +43,13 @@ function GuideListings() {
         <h2 className="font-bold text-4xl mb-2">My Listings</h2>
       </section>
       {listings.length ? (
-        <Link to="/guides/addListing" className="wrapper block">
+        <Link to="/guides/addListing" className="wrapper block fade-in-up">
           <button className="green-button my-4 ml-auto block">
             + Add Listing
           </button>
         </Link>
       ) : null}
-      <section className="grid-layout wrapper">
+      <section className="grid-layout wrapper fade-in-up">
         {!listings.length ? (
           <div className="text-center space-y-4">
             <House02Icon size={60} color={"#417505"} className="mx-auto" />

@@ -4,7 +4,7 @@ function ListingItem({ item }) {
   return (
     <div className="flex flex-col gap-3 h-full fade-in-up">
       <img
-        src={item.images.length > 0 ? item?.images[0] : "/Rectangle 5.jpg"}
+        src={item.images.length > 0 ? item?.images[0] : "/Rectangle 5.webp"}
         alt="listing"
         className="object-cover flex-1"
       />
