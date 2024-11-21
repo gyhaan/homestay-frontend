@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import ListingItem from "../UI/ListingItem";
-import Loader from "../UI/Loader";
 import Error from "../UI/Error";
 import { toast } from "sonner";
 import { getMyListings } from "../services/guideApi";
 import { House02Icon } from "hugeicons-react";
 import { Link } from "react-router-dom";
 import Skeleton from "../UI/Skeleton";
+import GuideListingItem from "../UI/GuideListingItem";
 
 function GuideListings() {
   const [listings, setListings] = useState([]);
@@ -59,7 +58,7 @@ function GuideListings() {
             </Link>
           </div>
         ) : (
-          listings.map((item, i) => <ListingItem item={item} key={i} />)
+          listings.map((item, i) => <GuideListingItem item={item} key={i} />)
         )}
       </section>
     </>

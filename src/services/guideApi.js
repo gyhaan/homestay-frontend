@@ -38,7 +38,6 @@ export async function addListing(formData) {
       throw new Error("Looks like you are not logged in!!");
     }
 
-    console.log(Object.fromEntries(formData));
     const res = await fetch(
       "https://homestay-backend-c160.onrender.com/api/v1/listings",
       {
@@ -93,5 +92,39 @@ export async function getGuideBookings() {
   } catch (err) {
     console.error("Error during login:", err.message);
     throw err; // Re-throw the error to allow higher-level handling if needed
+  }
+}
+
+export async function editListing(id, formData) {
+  try {
+    const token = JSON.parse(sessionStorage.getItem("token"));
+
+    if (!token) {
+      throw new Error("Looks like you are not logged in!!");
+    }
+
+    const res = await fetch(
+      `https://homestay-backend-c160.onrender.com/api/v1/listings/${id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(formData), // Pass the FormData directly
+      }
+    );
+
+    if (!res.ok) {
+      const errorData = await res.json();
+      throw new Error(errorData.message || "Failed to get user data");
+    }
+
+    const data = await res.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.error("Fetch error:", error.message);
+    throw error;
   }
 }

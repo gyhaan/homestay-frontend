@@ -25,6 +25,9 @@ import ProtectedRoute from "./protectRoute/ProtectedRoute";
 import { Toaster } from "sonner";
 import { AuthProvider } from "./Context/AuthProvider";
 import FullPageLoader from "./UI/FullPageLoader";
+import EditListing from "./pages/EditListing";
+import ViewListingItemGuide from "./UI/ViewListingItemGuide";
+import ViewGuideListing from "./pages/ViewGuideListing";
 
 function App() {
   return (
@@ -67,6 +70,8 @@ function App() {
                 <Route path="profile" element={<Profile />} />
                 <Route path="myListings" element={<GuideListings />} />
                 <Route path="addListing" element={<AddListing />} />
+                <Route path="listing/:id" element={<ViewGuideListing />} />
+                <Route path="editListing/:id" element={<EditListing />} />
                 <Route path="myBookings" element={<ViewGuideBooking />} />
               </Route>
               <Route path="*" element={<PageNotFound />} />

@@ -78,7 +78,7 @@ function ViewListing() {
 
   function bookChecker() {
     if (role !== "user") {
-      toast.info("Please login to book tour!!!");
+      toast.info("Please login as a user to book tour!!!");
       return;
     }
 
@@ -87,7 +87,7 @@ function ViewListing() {
 
   function reviewChecker() {
     if (role !== "user") {
-      toast.info("Please login to leave a review!!!");
+      toast.info("Please login as a user to leave a review!!!");
       return;
     }
 
@@ -118,7 +118,6 @@ function ViewListing() {
         ))}
       </div>
       <ViewListingItem item={listing} />
-
       <div className="my-8">
         {!isReviewing && (
           <button className="green-button" onClick={reviewChecker}>
@@ -137,7 +136,6 @@ function ViewListing() {
           />
         )}
       </div>
-
       <h4 className="font-bold my-3 mt-6 text-xl">Reviews</h4>
       {!listing?.reviews?.length ? (
         <p>No Reviews yet!!</p>
