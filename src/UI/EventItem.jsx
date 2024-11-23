@@ -1,11 +1,10 @@
+import { dateChecker } from "../utils/helper";
+import Tag from "./Tag";
+
 function EventItem({ item }) {
   return (
     <div className="flex flex-col gap-3 fade-in-up">
-      <img
-        src="/Rectangle 5.webp"
-        alt="listing"
-        className=" object-cover max-h-300"
-      />
+      <img src={item?.image} alt="listing" className="object-cover h-96" />
 
       <p>
         <span className="font-medium">Event Title: </span>
@@ -17,7 +16,10 @@ function EventItem({ item }) {
       </p>
       <p>
         <span className="font-medium">Date: </span>
-        <span>{new Date(item?.date).toDateString()}</span>
+        <span className="gap-2">
+          {new Date(item?.date).toDateString()}{" "}
+          {dateChecker(item?.date) ? <Tag /> : null}
+        </span>
       </p>
       <p>
         <span className="font-medium">Location: </span>
@@ -28,7 +30,7 @@ function EventItem({ item }) {
         <a
           href={`${item?.link}`}
           target="_blank"
-          className="hover:underline hover:underline-offset-4"
+          className="underline underline-offset-4"
         >
           {item?.link}
         </a>

@@ -1,7 +1,7 @@
 export async function getAllListings() {
   try {
     const res = await fetch(
-      "https://homestay-backend-c160.onrender.com/api/v1/listings"
+      "https://homestay-backend-c160.onrender.com/api/v1/listings?sort=price,-ratingsAverage"
     );
 
     if (!res.ok) {
@@ -43,7 +43,7 @@ export async function getListing(id) {
 
 export async function getEvents() {
   const res = await fetch(
-    "https://homestay-backend-c160.onrender.com/api/v1/events"
+    "https://homestay-backend-c160.onrender.com/api/v1/events?sort=-date"
   );
 
   if (!res.ok) {
