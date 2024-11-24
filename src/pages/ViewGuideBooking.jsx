@@ -10,8 +10,6 @@ function ViewGuideBooking() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  console.log(bookings);
-
   useEffect(() => {
     getGuideBookings()
       .then((data) => {
