@@ -15,6 +15,9 @@ function GuideListings() {
   useEffect(() => {
     getMyListings()
       .then((data) => {
+        data.data.listings.forEach((el) => {
+          el.images.sort((a, b) => a.slice(-24).localeCompare(b.slice(-24)));
+        });
         setListings(data.data.listings);
       })
       .catch((error) => {

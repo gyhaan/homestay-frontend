@@ -13,7 +13,11 @@ function ViewGuideBooking() {
   useEffect(() => {
     getGuideBookings()
       .then((data) => {
-        console.log(data.data.listings);
+        data.data.listings.forEach((el) => {
+          el.listing.images.sort((a, b) =>
+            a.slice(-24).localeCompare(b.slice(-24))
+          );
+        });
         setBookings(data.data.listings);
       })
       .catch((err) => {

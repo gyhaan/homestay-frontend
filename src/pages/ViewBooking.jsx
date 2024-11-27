@@ -12,12 +12,14 @@ function ViewBooking() {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
-  console.log(bookings);
-
   useEffect(() => {
     getMyBookings()
       .then((data) => {
-        console.log(data.data.listings);
+        data.data.listings.forEach((el) => {
+          el.listing.images.sort((a, b) =>
+            a.slice(-24).localeCompare(b.slice(-24))
+          );
+        });
         setBookings(data.data.listings);
       })
       .catch((err) => {
