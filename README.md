@@ -26,38 +26,51 @@ Make sure you have the following installed:
 
 ### Install Dependencies
 
-Using npm:
+**Installation**
+
+**Using npm:**
 npm install
-Using yarn:
+
+**Using yarn:**
 yarn install
-Starting the Application
-Development Mode
-Start the application in development mode:
 
-Using npm:
+**Starting the Application (Development Mode)**
+
+**Using npm:**
 npm run dev
-Using yarn:
-yarn dev
-Open your browser and navigate to http://localhost:5173 (or as specified in the console).
 
+**Using yarn:**
+yarn dev
+
+**Access the Application**
+
+Open your web browser and navigate to http://localhost:5173 (or the specified port in the console output).
 Build for Production
-Create a production-ready build:
+
+### Create a production-ready build:
+
+**Building for Production**
 
 Using npm:
 npm run build
+
 Using yarn:
 yarn build
-The built files will be available in the dist directory.
 
-Preview Production Build
-Serve the production build locally for testing:
+The built files will be located in the dist directory.
+
+**Previewing the Production Build**
+
+To preview the production build locally:
 
 Using npm:
 npm run preview
+
 Using yarn:
 yarn preview
 
-###Technologies Used
+
+### Technologies Used
 React: Frontend framework for building user interfaces.
 Vite: Fast development build tool for React.
 Tailwind CSS: Utility-first CSS framework for styling the application.
